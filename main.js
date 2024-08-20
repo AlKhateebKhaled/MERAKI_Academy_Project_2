@@ -207,12 +207,11 @@ const movies = [
     categories: ["Horror", "Drama"],
   },
 ];
-
-// Code :
+// Code:
 
 const main = $(`main`);
 
-const categoryDiv = $(`<div class = category_area ></div>`);
+const categoryDiv = $(`<div class="category_area"></div>`);
 main.append(categoryDiv);
 
 const mainPageBtn = $(`<button>Main Page</button>`);
@@ -230,153 +229,81 @@ categoryDiv.append(
   animeBtn
 );
 
-const mainDiv = $(`<div class = mainDiv_area ></div>`);
+const mainDiv = $(`<div class="mainDiv_area"></div>`);
 main.append(mainDiv);
 
-movies.forEach((movies) => {
-  const movieDiv = $(`
-        <div class = "movie_area"></div>
-        <img src=${movies.imageSrc} width="200" height="200">        
-        <h2> ${movies.movieName}</h2>
-        <p><strong>Actors: </strong>${movies.actors.join(", ")}</p>
-        <p><strong>Description: </strong>${movies.description}</p>
-        <p><strong>Rate: </strong>${movies.rate}</p>
-        <p><strong>Categories: </strong>${movies.categories.join(", ")}</p>
-        <button class = "movieView">View</button>
-        `);
+function showMovieDetails(movie) {
+  mainDiv.empty();
+  const movieDetailDiv = $(`
+      <div class="movie_detail_area">
+        <img src=${movie.imageSrc} width="200" height="200">        
+        <h2>${movie.movieName}</h2>
+        <p><strong>Actors: </strong>${movie.actors.join(", ")}</p>
+        <p><strong>Description: </strong>${movie.description}</p>
+        <p><strong>Rate: </strong>${movie.rate}</p>
+        <p><strong>Categories: </strong>${movie.categories.join(", ")}</p>
+        <button id="backBtn">Back to List</button>
+      </div>
+    `);
+  mainDiv.append(movieDetailDiv);
 
-  const movieDetailsDiv = $(`
-            <div class = "movie_details_area"></div>
-            <img src=${movies.imageSrc} width="200" height="200">        
-            <h2> ${movies.movieName}</h2>
-            <p><strong>Actors: </strong>${movies.actors.join(", ")}</p>
-            <p><strong>Description: </strong>${movies.description}</p>
-            <p><strong>Rate: </strong>${movies.rate}</p>
-            <p><strong>Categories: </strong>${movies.categories.join(", ")}</p>
-            <button class = "movieView">View</button>
-            `);
-
-  const viewBtn = $(".movieView");
-  viewBtn.on("click", () => {
-    mainDiv.empty();
+  $("#backBtn").on("click", () => {
+    displayMovies(currentMovies);
   });
-  mainDiv.append(movieDiv);
-});
+}
+
+function displayMovies(movies) {
+  mainDiv.empty();
+  movies.forEach((movie) => {
+    const movieDiv = $(`
+        <div class="movie_area">
+          <img src=${movie.imageSrc} width="200" height="200">        
+          <h2>${movie.movieName}</h2>
+          <p><strong>Actors: </strong>${movie.actors.join(", ")}</p>
+          <p><strong>Description: </strong>${movie.description}</p>
+          <p><strong>Rate: </strong>${movie.rate}</p>
+          <p><strong>Categories: </strong>${movie.categories.join(", ")}</p>
+          <button class="detailsBtn">Details</button>
+        </div>
+      `);
+    mainDiv.append(movieDiv);
+
+    const detailsBtn = $(".detailsBtn");
+    detailsBtn.on("click", () => {
+      showMovieDetails(movie);
+    });
+  });
+}
+
+let currentMovies = movies;
+displayMovies(currentMovies);
 
 mainPageBtn.on("click", () => {
-  mainDiv.empty();
-
-  movies.forEach((movies) => {
-    const movieDiv = $(`
-        <div class = "movie_area"></div>
-        <img src=${movies.imageSrc} width="200" height="200">        
-        <h2> ${movies.movieName}</h2>
-        <p><strong>Actors: </strong>${movies.actors.join(", ")}</p>
-        <p><strong>Description: </strong>${movies.description}</p>
-        <p><strong>Rate: </strong>${movies.rate}</p>
-        <p><strong>Categories: </strong>${movies.categories.join(", ")}</p>
-        <button class = "movieView">View</button>
-        `);
-    mainDiv.append(movieDiv);
-  });
+  currentMovies = movies;
+  displayMovies(currentMovies);
 });
 
 actionBtn.on("click", () => {
-  mainDiv.empty();
-
-  movies.forEach((movies) => {
-    if (movies.categories.includes("Action")) {
-      const movieDiv = $(`
-            <div class = "movie_area"></div>
-            <img src=${movies.imageSrc} width="200" height="200">        
-            <h2> ${movies.movieName}</h2>
-            <p><strong>Actors: </strong>${movies.actors.join(", ")}</p>
-            <p><strong>Description: </strong>${movies.description}</p>
-            <p><strong>Rate: </strong>${movies.rate}</p>
-            <p><strong>Categories: </strong>${movies.categories.join(", ")}</p>
-            <button class = "movieView">View</button>
-            `);
-      mainDiv.append(movieDiv);
-    }
-  });
+  currentMovies = movies.filter((movie) => movie.categories.includes("Action"));
+  displayMovies(currentMovies);
 });
 
 comedyBtn.on("click", () => {
-  mainDiv.empty();
-
-  movies.forEach((movies) => {
-    if (movies.categories.includes("Comedy")) {
-      const movieDiv = $(`
-            <div class = "movie_area"></div>
-            <img src=${movies.imageSrc} width="200" height="200">        
-            <h2> ${movies.movieName}</h2>
-            <p><strong>Actors: </strong>${movies.actors.join(", ")}</p>
-            <p><strong>Description: </strong>${movies.description}</p>
-            <p><strong>Rate: </strong>${movies.rate}</p>
-            <p><strong>Categories: </strong>${movies.categories.join(", ")}</p>
-            <button class = "movieView">View</button>
-            `);
-      mainDiv.append(movieDiv);
-    }
-  });
+  currentMovies = movies.filter((movie) => movie.categories.includes("Comedy"));
+  displayMovies(currentMovies);
 });
 
 horrorBtn.on("click", () => {
-  mainDiv.empty();
-
-  movies.forEach((movies) => {
-    if (movies.categories.includes("Horror")) {
-      const movieDiv = $(`
-            <div class = "movie_area"></div>
-            <img src=${movies.imageSrc} width="200" height="200">        
-            <h2> ${movies.movieName}</h2>
-            <p><strong>Actors: </strong>${movies.actors.join(", ")}</p>
-            <p><strong>Description: </strong>${movies.description}</p>
-            <p><strong>Rate: </strong>${movies.rate}</p>
-            <p><strong>Categories: </strong>${movies.categories.join(", ")}</p>
-            <button class = "movieView">View</button>
-            `);
-      mainDiv.append(movieDiv);
-    }
-  });
+  currentMovies = movies.filter((movie) => movie.categories.includes("Horror"));
+  displayMovies(currentMovies);
 });
 
 dramaBtn.on("click", () => {
-  mainDiv.empty();
-
-  movies.forEach((movies) => {
-    if (movies.categories.includes("Drama")) {
-      const movieDiv = $(`
-            <div class = "movie_area"></div>
-            <img src=${movies.imageSrc} width="200" height="200">        
-            <h2> ${movies.movieName}</h2>
-            <p><strong>Actors: </strong>${movies.actors.join(", ")}</p>
-            <p><strong>Description: </strong>${movies.description}</p>
-            <p><strong>Rate: </strong>${movies.rate}</p>
-            <p><strong>Categories: </strong>${movies.categories.join(", ")}</p>
-            <button class = "movieView">View</button>
-            `);
-      mainDiv.append(movieDiv);
-    }
-  });
+  currentMovies = movies.filter((movie) => movie.categories.includes("Drama"));
+  displayMovies(currentMovies);
 });
 
 animeBtn.on("click", () => {
-  mainDiv.empty();
-
-  movies.forEach((movies) => {
-    if (movies.categories.includes("Anime")) {
-      const movieDiv = $(`
-            <div class = "movie_area"></div>
-            <img src=${movies.imageSrc} width="200" height="200">        
-            <h2> ${movies.movieName}</h2>
-            <p><strong>Actors: </strong>${movies.actors.join(", ")}</p>
-            <p><strong>Description: </strong>${movies.description}</p>
-            <p><strong>Rate: </strong>${movies.rate}</p>
-            <p><strong>Categories: </strong>${movies.categories.join(", ")}</p>
-            <button class = "movieView">View</button>
-            `);
-      mainDiv.append(movieDiv);
-    }
-  });
+  currentMovies = movies.filter((movie) => movie.categories.includes("Anime"));
+  displayMovies(currentMovies);
 });

@@ -208,6 +208,8 @@ const movies = [
   },
 ];
 
+let favorites = [];
+let watchlist = [];
 
 // Code:
 
@@ -222,13 +224,17 @@ const comedyBtn = $(`<button>Comedy</button>`);
 const horrorBtn = $(`<button>Horror</button>`);
 const dramaBtn = $(`<button>Drama</button>`);
 const animeBtn = $(`<button>Anime</button>`);
+const favoritesBtn = $(`<button>Favorites</button>`);
+const watchlistBtn = $(`<button>Watchlist</button>`);
 categoryDiv.append(
   mainPageBtn,
   actionBtn,
   comedyBtn,
   horrorBtn,
   dramaBtn,
-  animeBtn
+  animeBtn,
+  favoritesBtn,
+  watchlistBtn
 );
 
 const searchDiv = $(`<div class="mainDiv_area"></div>`);
@@ -238,7 +244,7 @@ const moviesDiv = $(`<div class="mainDiv_area"></div>`);
 main.append(moviesDiv);
 
 function showMovieDetails(movie) {
-    moviesDiv.empty();
+  moviesDiv.empty();
   const movieDetailDiv = $(`
       <div class="movie_detail_area">
         <img src=${movie.imageSrc} width="200" height="200">        
@@ -248,17 +254,38 @@ function showMovieDetails(movie) {
         <p><strong>Rate: </strong>${movie.rate}</p>
         <p><strong>Categories: </strong>${movie.categories.join(", ")}</p>
         <button id="backBtn">Back to List</button>
+        <button class="favBtn">${
+          favorites.includes(movie.id) ? "Remove from Favorites" : "Favorite"
+        }</button>
+        <button class="watchlistBtn">${
+          watchlist.includes(movie.id) ? "Remove from Watchlist" : "Watchlist"
+        }</button>
       </div>
     `);
-    moviesDiv.append(movieDetailDiv);
+  moviesDiv.append(movieDetailDiv);
 
-  $("#backBtn").on("click", () => {
+  const backBtn = $("#backBtn");
+  backBtn.on("click", () => {
     displayMovies(currentMovies);
+  });
+
+  const favBtn = $(".favBtn");
+  favBtn.on("click", () => {
+    toggleFavorite(movie.id);
+    displayMovies(currentMovies);
+    favBtn.text(favorites.includes(movie.id) ? "Remove from Favorites" : "Favorite");
+  });
+
+  const watchlistBtn = $(".watchlistBtn");
+  watchlistBtn.on("click", () => {
+    toggleWatchlist(movie.id);
+    displayMovies(currentMovies);
+    watchlistBtn.text(watchlist.includes(movie.id) ? "Remove from Watchlist" : "Watchlist");
   });
 }
 
 function displayMovies(movies) {
-    moviesDiv.empty();
+  moviesDiv.empty();
   movies.forEach((movie) => {
     const movieDiv = $(`
         <div class="movie_area">
@@ -269,15 +296,49 @@ function displayMovies(movies) {
           <p><strong>Rate: </strong>${movie.rate}</p>
           <p><strong>Categories: </strong>${movie.categories.join(", ")}</p>
           <button class="detailsBtn">Details</button>
+          <button class="favBtn">${
+            favorites.includes(movie.id) ? "Remove from Favorites" : "Favorite"
+          }</button>
+          <button class="watchlistBtn">${
+            watchlist.includes(movie.id) ? "Remove from Watchlist" : "Watchlist"
+          }</button>
         </div>
       `);
-      moviesDiv.append(movieDiv);
+    moviesDiv.append(movieDiv);
 
-    const detailsBtn = $(".detailsBtn");
+    const detailsBtn = movieDiv.find(".detailsBtn");
     detailsBtn.on("click", () => {
       showMovieDetails(movie);
     });
+
+    const favBtn = movieDiv.find(".favBtn");
+    favBtn.on("click", () => {
+      toggleFavorite(movie.id);
+      displayMovies(currentMovies);
+    });
+
+    const watchlistBtn = movieDiv.find(".watchlistBtn");
+    watchlistBtn.on("click", () => {
+      toggleWatchlist(movie.id);
+      displayMovies(currentMovies);
+    });
   });
+}
+
+function toggleFavorite(movieId) {
+  if (favorites.includes(movieId)) {
+    favorites = favorites.filter((id) => id !== movieId);
+  } else {
+    favorites.push(movieId);
+  }
+}
+
+function toggleWatchlist(movieId) {
+  if (watchlist.includes(movieId)) {
+    watchlist = watchlist.filter((id) => id !== movieId);
+  } else {
+    watchlist.push(movieId);
+  }
 }
 
 let currentMovies = movies;
@@ -313,15 +374,25 @@ animeBtn.on("click", () => {
   displayMovies(currentMovies);
 });
 
+favoritesBtn.on("click", () => {
+  currentMovies = movies.filter((movie) => favorites.includes(movie.id));
+  displayMovies(currentMovies);
+});
+
+watchlistBtn.on("click", () => {
+  currentMovies = movies.filter((movie) => watchlist.includes(movie.id));
+  displayMovies(currentMovies);
+});
+
 const searchInput = $(`<input type="text" id="searchInput">`);
 const searchBtn = $(`<button id="searchBtn">Search</button>`);
 searchDiv.prepend(searchBtn);
-searchDiv.prepend(searchInput); // search by movieName
+searchDiv.prepend(searchInput);
 
 searchBtn.on("click", () => {
-    const searchTerm = searchInput.val().toLowerCase();
-    currentMovies = movies.filter((movie) =>
-        movie.movieName.toLowerCase().includes(searchTerm)
-    );
-    displayMovies(currentMovies);
+  const searchTerm = searchInput.val().toLowerCase();
+  currentMovies = movies.filter((movie) =>
+    movie.movieName.toLowerCase().includes(searchTerm)
+  );
+  displayMovies(currentMovies);
 });

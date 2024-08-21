@@ -207,6 +207,8 @@ const movies = [
     categories: ["Horror", "Drama"],
   },
 ];
+
+
 // Code:
 
 const main = $(`main`);
@@ -229,11 +231,14 @@ categoryDiv.append(
   animeBtn
 );
 
-const mainDiv = $(`<div class="mainDiv_area"></div>`);
-main.append(mainDiv);
+const searchDiv = $(`<div class="mainDiv_area"></div>`);
+main.append(searchDiv);
+
+const moviesDiv = $(`<div class="mainDiv_area"></div>`);
+main.append(moviesDiv);
 
 function showMovieDetails(movie) {
-  mainDiv.empty();
+    moviesDiv.empty();
   const movieDetailDiv = $(`
       <div class="movie_detail_area">
         <img src=${movie.imageSrc} width="200" height="200">        
@@ -245,7 +250,7 @@ function showMovieDetails(movie) {
         <button id="backBtn">Back to List</button>
       </div>
     `);
-  mainDiv.append(movieDetailDiv);
+    moviesDiv.append(movieDetailDiv);
 
   $("#backBtn").on("click", () => {
     displayMovies(currentMovies);
@@ -253,7 +258,7 @@ function showMovieDetails(movie) {
 }
 
 function displayMovies(movies) {
-  mainDiv.empty();
+    moviesDiv.empty();
   movies.forEach((movie) => {
     const movieDiv = $(`
         <div class="movie_area">
@@ -266,7 +271,7 @@ function displayMovies(movies) {
           <button class="detailsBtn">Details</button>
         </div>
       `);
-    mainDiv.append(movieDiv);
+      moviesDiv.append(movieDiv);
 
     const detailsBtn = $(".detailsBtn");
     detailsBtn.on("click", () => {
@@ -306,4 +311,17 @@ dramaBtn.on("click", () => {
 animeBtn.on("click", () => {
   currentMovies = movies.filter((movie) => movie.categories.includes("Anime"));
   displayMovies(currentMovies);
+});
+
+const searchInput = $(`<input type="text" id="searchInput">`);
+const searchBtn = $(`<button id="searchBtn">Search</button>`);
+searchDiv.prepend(searchBtn);
+searchDiv.prepend(searchInput); // search by movieName
+
+searchBtn.on("click", () => {
+    const searchTerm = searchInput.val().toLowerCase();
+    currentMovies = movies.filter((movie) =>
+        movie.movieName.toLowerCase().includes(searchTerm)
+    );
+    displayMovies(currentMovies);
 });

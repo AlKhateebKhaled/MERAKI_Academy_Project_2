@@ -248,8 +248,16 @@ let watchlist = [];
 
 const main = $(`main`);
 
+let nav = "";
+
 const categoryDiv = $(`<div class="category_area"></div>`);
 main.append(categoryDiv);
+
+const movieListsDiv = $(`<div class="movieListsDiv"></div>`);
+categoryDiv.append(movieListsDiv);
+
+const myListsDiv = $(`<div class="myListsDiv"></div>`);
+categoryDiv.append(myListsDiv);
 
 const mainPageBtn = $(`<button>Main Page</button>`);
 const actionBtn = $(`<button>Action</button>`);
@@ -259,16 +267,16 @@ const dramaBtn = $(`<button>Drama</button>`);
 const animeBtn = $(`<button>Animation</button>`);
 const favoritesBtn = $(`<button>Favorites</button>`);
 const watchlistBtn = $(`<button>Watchlist</button>`);
-categoryDiv.append(
+movieListsDiv.append(
   mainPageBtn,
   actionBtn,
   comedyBtn,
   horrorBtn,
   dramaBtn,
-  animeBtn,
-  favoritesBtn,
-  watchlistBtn
+  animeBtn
 );
+
+myListsDiv.append(favoritesBtn, watchlistBtn);
 
 const mainScreenDiv = $(`<div class="mainScreenDiv"></div>`);
 main.append(mainScreenDiv);
@@ -293,8 +301,6 @@ subFilterDiv.append(filterHeadingDiv);
 
 const showedMoviesDiv = $(`<div class="showedMoviesDiv_area"></div>`);
 filterDiv.append(showedMoviesDiv);
-
-
 
 function showMovieDetails(movie) {
   moviesDiv.empty();
@@ -356,10 +362,7 @@ function displayMovies(movies) {
         <div class="movieinfo_area">
           <img src=${movie.imageSrc} width="200" height="200">        
           <h2>${movie.movieName}</h2>
-          <p><strong>Actors: </strong>${movie.actors.join(", ")}</p>
-          <p><strong>Description: </strong>${movie.description}</p>
           <p><strong>releaseYear: </strong>${movie.releaseYear}</p>
-          <p><strong>Duration: </strong>${movie.duration} Minuites</p>
           <p><strong>Rate: </strong>${movie.rate}</p>
           <p><strong>Categories: </strong>${movie.categories.join(", ")}</p>
           </div>
@@ -379,19 +382,32 @@ function displayMovies(movies) {
 
     const detailsBtn = movieDiv.find(".detailsBtn");
     detailsBtn.on("click", () => {
+      nav = "other";
       showMovieDetails(movie);
     });
 
     const favBtn = movieDiv.find(".favBtn");
     favBtn.on("click", () => {
       toggleFavorite(movie.id);
-      displayMovies(currentMovies);
+      if (nav === "other") {
+        displayMovies(currentMovies);
+      } else if (nav === "favorites") {
+        displayMovies(currentFavoritesMovies);
+      } else {
+        displayMovies(currentWatchlistMovies);
+      }
     });
 
     const watchlistBtn = movieDiv.find(".watchlistBtn");
     watchlistBtn.on("click", () => {
       toggleWatchlist(movie.id);
-      displayMovies(currentMovies);
+      if (nav === "other") {
+        displayMovies(currentMovies);
+      } else if (nav === "favorites") {
+        displayMovies(currentFavoritesMovies);
+      } else {
+        displayMovies(currentWatchlistMovies);
+      }
     });
   });
 }
@@ -402,6 +418,9 @@ function toggleFavorite(movieId) {
   } else {
     favorites.push(movieId);
   }
+  currentFavoritesMovies = movies.filter((movie) =>
+    favorites.includes(movie.id)
+  );
 }
 
 function toggleWatchlist(movieId) {
@@ -410,6 +429,9 @@ function toggleWatchlist(movieId) {
   } else {
     watchlist.push(movieId);
   }
+  currentWatchlistMovies = movies.filter((movie) =>
+    watchlist.includes(movie.id)
+  );
 }
 
 let currentMovies = movies;
@@ -431,48 +453,56 @@ function filterMoviesByCategory(category) {
 }
 
 mainPageBtn.on("click", () => {
-    filterDiv.show();
-    searchDiv.show();
+  nav = "other";
+  filterDiv.show();
+  searchDiv.show();
   subFilterDiv.empty();
   filterMoviesByCategory("Main Page");
 });
 actionBtn.on("click", () => {
+  nav = "other";
   filterDiv.show();
   searchDiv.show();
   subFilterDiv.empty();
   filterMoviesByCategory("Action");
 });
 comedyBtn.on("click", () => {
+  nav = "other";
   filterDiv.show();
   searchDiv.show();
   subFilterDiv.empty();
   filterMoviesByCategory("Comedy");
 });
 horrorBtn.on("click", () => {
+  nav = "other";
   filterDiv.show();
   searchDiv.show();
   subFilterDiv.empty();
   filterMoviesByCategory("Horror");
 });
 dramaBtn.on("click", () => {
+  nav = "other";
   filterDiv.show();
   searchDiv.show();
   subFilterDiv.empty();
   filterMoviesByCategory("Drama");
 });
 animeBtn.on("click", () => {
+  nav = "other";
   filterDiv.show();
   searchDiv.show();
   subFilterDiv.empty();
   filterMoviesByCategory("Animation");
 });
 favoritesBtn.on("click", () => {
+  nav = "favorites";
   filterDiv.show();
   searchDiv.show();
   subFilterDiv.empty();
   filterMoviesByCategory("Favorites");
 });
 watchlistBtn.on("click", () => {
+  nav = "watchlist";
   filterDiv.show();
   searchDiv.show();
   subFilterDiv.empty();
@@ -558,9 +588,7 @@ $("#filter").on("change", function () {
     ratingFilter.on("change", function () {
       filterHeadingDiv.empty();
       const selectedRating = $(this).val();
-      currentMovies = movies.filter(
-        (movie) => movie.rate >= selectedRating
-      );
+      currentMovies = movies.filter((movie) => movie.rate >= selectedRating);
       displayMovies(currentMovies);
       const ratingHeading = "Filtered by: Minimum Rating";
       filterHeadingDiv.append(ratingHeading);

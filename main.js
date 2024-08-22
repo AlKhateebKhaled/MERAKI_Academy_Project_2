@@ -637,7 +637,6 @@ $("#filter").on("change", function () {
     });
   } else {
     subFilterDiv.empty();
-    currentMovies = movies;
     displayMovies(currentMovies);
   }
 });

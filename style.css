@@ -21,16 +21,12 @@
     
   main {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 6fr;
     padding: 20px;
     gap: 10px;
   }
 
-  .categoryDiv{
-    display: grid;
-    height: 100%;
-    width: 50px;
-  }
+
   .mainScreenDiv{
     
   }
@@ -59,10 +55,11 @@
     background-color: #333;
   }
   
-  .mainDiv_area {
+  .moviesDiv {
     display: grid;
     grid-template-columns:repeat(3,1fr);
     column-gap:space-between;
+    row-gap: 30px;
   }
   
   .movie_area {
@@ -76,7 +73,7 @@
   
   .movie_area img {
     width: 100%;
-    height: auto;
+    height: 300px;
     border-radius: 4px;
   }
   
@@ -103,7 +100,8 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     font-size: 20px;
     width: 150px;
   }
@@ -139,14 +137,33 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
     text-align: center;
+    width: 230%;
   }
   
   .movie_detail_area img {
-    width: 100%;
+    width: 50%;
     height: auto;
     border-radius: 4px;
   }
   
+  
+  .movie_detail_area h2 {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  
+  .movie_detail_area p {
+    font-size: 14px;
+    margin: 5px 0;
+    text-align: left
+  }
+  
+  .movie_detail_area{
+    padding: 5px;
+    height: 550px;
+
+  }
+
   .movie_detail_area button {
     margin-top: 10px;
   }
@@ -163,7 +180,7 @@
 
 
   select {
-    width: 30%;
+    width: 200px;
     padding: 10px;
     font-size: 16px;
     color: #333;

@@ -3,7 +3,7 @@ const movies = [
     id: 1,
     movieName: "The Dark Knight",
     actors: ["Christian Bale", "Heath Ledger", "Aaron Eckhart"],
-    imageSrc: "https://example.com/dark_knight.jpg",
+    imageSrc: "images.jpeg",
     description:
       "When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham.",
     rate: 9,
@@ -15,7 +15,7 @@ const movies = [
     id: 2,
     movieName: "Inception",
     actors: ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Elliot Page"],
-    imageSrc: "https://example.com/inception.jpg",
+    imageSrc: "inception.jpg",
     description:
       "A thief who enters the dreams of others to steal secrets from their subconscious is given the task of planting an idea into the mind of a CEO.",
     rate: 9,
@@ -298,8 +298,8 @@ filterDiv.append(showedMoviesDiv);
 
 function showMovieDetails(movie) {
   moviesDiv.empty();
-  filterDiv.empty();
-  searchDiv.empty();
+  filterDiv.hide();
+  searchDiv.hide();
   const movieDetailDiv = $(`
       <div class="movie_detail_area">
         <img src=${movie.imageSrc} width="200" height="200">        
@@ -429,34 +429,50 @@ function filterMoviesByCategory(category) {
 }
 
 mainPageBtn.on("click", () => {
+    filterDiv.show();
+    searchDiv.show();
   subFilterDiv.empty();
   filterMoviesByCategory("Main Page");
 });
 actionBtn.on("click", () => {
+    filterDiv.hide();
+    searchDiv.hide();
   subFilterDiv.empty();
   filterMoviesByCategory("Action");
 });
 comedyBtn.on("click", () => {
+    filterDiv.hide();
+    searchDiv.hide();
   subFilterDiv.empty();
   filterMoviesByCategory("Comedy");
 });
 horrorBtn.on("click", () => {
+    filterDiv.hide();
+    searchDiv.hide();
   subFilterDiv.empty();
   filterMoviesByCategory("Horror");
 });
 dramaBtn.on("click", () => {
+    filterDiv.hide();
+    searchDiv.hide();
   subFilterDiv.empty();
   filterMoviesByCategory("Drama");
 });
 animeBtn.on("click", () => {
+    filterDiv.hide();
+    searchDiv.hide();
   subFilterDiv.empty();
   filterMoviesByCategory("Animation");
 });
 favoritesBtn.on("click", () => {
+    filterDiv.hide();
+    searchDiv.hide();
   subFilterDiv.empty();
   filterMoviesByCategory("Favorites");
 });
 watchlistBtn.on("click", () => {
+    filterDiv.hide();
+    searchDiv.hide();
   subFilterDiv.empty();
   filterMoviesByCategory("Watchlist");
 });
@@ -513,7 +529,7 @@ $("#filter").on("change", function () {
       filterHeadingDiv.empty();
       const selectedYear = $(this).val();
       currentMovies = movies.filter(
-        (movie) => currentMovies.releaseYear == selectedYear
+        (movie) => movies.releaseYear == selectedYear
       );
       displayMovies(currentMovies);
       const releasedYearHeading = "Filtered by: Release Year";
@@ -540,7 +556,7 @@ $("#filter").on("change", function () {
     ratingFilter.on("change", function () {
       filterHeadingDiv.empty();
       const selectedRating = $(this).val();
-      currentMovies = currentMovies.filter(
+      currentMovies = movies.filter(
         (movie) => movie.rate >= selectedRating
       );
       displayMovies(currentMovies);
@@ -573,17 +589,17 @@ $("#filter").on("change", function () {
 
       const selectedDuration = $(this).val();
       if (selectedDuration === "1") {
-        currentMovies = currentMovies.filter((movie) => movie.duration <= 90);
+        currentMovies = movies.filter((movie) => movie.duration <= 90);
         const durationHeading = "Filtered by: Duration";
         filterHeadingDiv.append(durationHeading);
       } else if (selectedDuration === "2") {
-        currentMovies = currentMovies.filter(
+        currentMovies = movies.filter(
           (movie) => movie.duration > 90 && movie.duration <= 120
         );
         const durationHeading = "Filtered by: Duration";
         filterHeadingDiv.append(durationHeading);
       } else if (selectedDuration === "3") {
-        currentMovies = currentMovies.filter((movie) => movie.duration > 120);
+        currentMovies = movies.filter((movie) => movie.duration > 120);
         const durationHeading = "Filtered by: Duration";
         filterHeadingDiv.append(durationHeading);
       }

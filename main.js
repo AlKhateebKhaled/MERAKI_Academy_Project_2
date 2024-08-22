@@ -27,7 +27,7 @@ const movies = [
     id: 3,
     movieName: "Toy Story",
     actors: ["Tom Hanks", "Tim Allen", "Don Rickles"],
-    imageSrc: "https://example.com/toy_story.jpg",
+    imageSrc: "Toy_Story.jpg",
     description:
       "A cowboy doll is profoundly affected by the new toy, a spaceman action figure, that becomes his rival.",
     rate: 8,
@@ -39,7 +39,7 @@ const movies = [
     id: 4,
     movieName: "Parasite",
     actors: ["Kang-ho Song", "Sun-kyun Lee", "Yeo-jeong Jo"],
-    imageSrc: "https://example.com/parasite.jpg",
+    imageSrc: "Parasite.jpg",
     description:
       "All unemployed, Ki-taek's family takes peculiar interest in the wealthy and glamorous Park family for their livelihood until they get entangled in an unexpected incident.",
     rate: 9,
@@ -51,7 +51,7 @@ const movies = [
     id: 5,
     movieName: "The Conjuring",
     actors: ["Vera Farmiga", "Patrick Wilson", "Lili Taylor"],
-    imageSrc: "https://example.com/conjuring.jpg",
+    imageSrc: "The_Conjuring.jpg",
     description:
       "Paranormal investigators Ed and Lorraine Warren work to help a family terrorized by a dark presence.",
     rate: 8,
@@ -63,7 +63,7 @@ const movies = [
     id: 6,
     movieName: "Spirited Away",
     actors: ["Rumi Hiiragi", "Miyu Irino", "Mari Natsuki"],
-    imageSrc: "https://example.com/spirited_away.jpg",
+    imageSrc: "Spirited_Away.jpg",
     description:
       "During her family's move to the suburbs, a 10-year-old girl wanders into a world ruled by gods, witches, and spirits.",
     rate: 9,
@@ -75,7 +75,7 @@ const movies = [
     id: 7,
     movieName: "Avengers: Endgame",
     actors: ["Robert Downey Jr.", "Chris Evans", "Mark Ruffalo"],
-    imageSrc: "https://example.com/avengers_endgame.jpg",
+    imageSrc: "Avengers_Endgame.jpg",
     description:
       "The Avengers assemble once more in order to reverse Thanos' actions and restore order to the universe.",
     rate: 9,
@@ -87,7 +87,7 @@ const movies = [
     id: 8,
     movieName: "The Hangover",
     actors: ["Bradley Cooper", "Ed Helms", "Zach Galifianakis"],
-    imageSrc: "https://example.com/hangover.jpg",
+    imageSrc: "The_Hangover.jpg",
     description:
       "Three friends wake up from a bachelor party in Las Vegas with no memory of the previous night and must retrace their steps to find their missing friend.",
     rate: 8,
@@ -99,7 +99,7 @@ const movies = [
     id: 9,
     movieName: "Get Out",
     actors: ["Daniel Kaluuya", "Allison Williams", "Catherine Keener"],
-    imageSrc: "https://example.com/get_out.jpg",
+    imageSrc: "Get_Out.jpg",
     description:
       "A young African-American man visits his white girlfriend's parents for the weekend where his reception from the family turns increasingly hostile.",
     rate: 9,
@@ -111,7 +111,7 @@ const movies = [
     id: 10,
     movieName: "The Matrix",
     actors: ["Keanu Reeves", "Laurence Fishburne", "Carrie-Anne Moss"],
-    imageSrc: "https://example.com/matrix.jpg",
+    imageSrc: "The_Matrix.jpg",
     description:
       "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
     rate: 9,
@@ -123,7 +123,7 @@ const movies = [
     id: 11,
     movieName: "Pulp Fiction",
     actors: ["John Travolta", "Uma Thurman", "Samuel L. Jackson"],
-    imageSrc: "https://example.com/pulp_fiction.jpg",
+    imageSrc: "Pulp_Fiction.jpg",
     description:
       "The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
     rate: 9,
@@ -135,7 +135,7 @@ const movies = [
     id: 12,
     movieName: "Finding Nemo",
     actors: ["Albert Brooks", "Ellen DeGeneres", "Alexander Gould"],
-    imageSrc: "https://example.com/finding_nemo.jpg",
+    imageSrc: "Finding_Nemo.jpg",
     description:
       "After his son is captured in the Great Barrier Reef and taken to Sydney, a timid clownfish sets out on a journey to bring him home.",
     rate: 8,
@@ -147,7 +147,7 @@ const movies = [
     id: 13,
     movieName: "Shutter Island",
     actors: ["Leonardo DiCaprio", "Emily Mortimer", "Mark Ruffalo"],
-    imageSrc: "https://example.com/shutter_island.jpg",
+    imageSrc: "Shutter_Island.jpg",
     description:
       "A U.S. Marshal investigates the disappearance of a murderer who escaped from a mental institution.",
     rate: 8,
@@ -159,7 +159,7 @@ const movies = [
     id: 14,
     movieName: "A Quiet Place",
     actors: ["Emily Blunt", "John Krasinski", "Millicent Simmonds"],
-    imageSrc: "https://example.com/a_quiet_place.jpg",
+    imageSrc: "A_Quiet_Place.jpg",
     description:
       "In a post-apocalyptic world, a family is forced to live in silence while hiding from monsters with ultra-sensitive hearing.",
     rate: 8,
@@ -171,7 +171,7 @@ const movies = [
     id: 15,
     movieName: "My Neighbor Totoro",
     actors: ["Hitoshi Takagi", "Noriko Hidaka", "Chika Sakamoto"],
-    imageSrc: "https://example.com/my_neighbor_totoro.jpg",
+    imageSrc: "My_Neighbor_Totoro.jpg",
     description:
       "Two young sisters move to the countryside where they encounter friendly forest spirits, including the giant Totoro.",
     rate: 9,
@@ -183,7 +183,7 @@ const movies = [
     id: 16,
     movieName: "Guardians of the Galaxy",
     actors: ["Chris Pratt", "Zoe Saldana", "Dave Bautista"],
-    imageSrc: "https://example.com/guardians_of_the_galaxy.jpg",
+    imageSrc: "Guardians_of_the_Galaxy.jpg",
     description:
       "A group of intergalactic criminals must pull together to stop a fanatical warrior with plans to purge the universe.",
     rate: 8,
@@ -195,7 +195,7 @@ const movies = [
     id: 17,
     movieName: "It",
     actors: ["Bill Skarsgård", "Jaeden Martell", "Finn Wolfhard"],
-    imageSrc: "https://example.com/it.jpg",
+    imageSrc: "It.jpg",
     description:
       "A group of kids face their fears and band together to destroy a shape-shifting entity that emerges from the sewers every 27 years.",
     rate: 8,
@@ -207,7 +207,7 @@ const movies = [
     id: 18,
     movieName: "Your Name",
     actors: ["Ryunosuke Kamiki", "Mone Kamishiraishi", "Ryo Narita"],
-    imageSrc: "https://example.com/your_name.jpg",
+    imageSrc: "Your_Name.jpg",
     description:
       "Two teenagers who swap bodies discover a connection between them as they uncover a series of mysterious events.",
     rate: 9,
@@ -219,7 +219,7 @@ const movies = [
     id: 19,
     movieName: "Deadpool",
     actors: ["Ryan Reynolds", "Morena Baccarin", "T.J. Miller"],
-    imageSrc: "https://example.com/deadpool.jpg",
+    imageSrc: "Deadpool.jpg",
     description:
       "A former special forces operative turned mercenary undergoes experimental treatment to become the antihero Deadpool.",
     rate: 8,
@@ -231,7 +231,7 @@ const movies = [
     id: 20,
     movieName: "The Shining",
     actors: ["Jack Nicholson", "Shelley Duvall", "Danny Lloyd"],
-    imageSrc: "https://example.com/the_shining.jpg",
+    imageSrc: "The_Shining.jpg",
     description:
       "A family heads to an isolated hotel for the winter where an evil presence influences the father into violence.",
     rate: 9,
@@ -283,7 +283,7 @@ const searchDiv = $(`<div class="searchDiv_area"></div>`);
 moviesheaderDiv.append(searchDiv);
 
 const filterDiv = $(`<div class="filterDiv_area"></div>`);
-searchDiv.append(filterDiv);
+moviesheaderDiv.append(filterDiv);
 
 const subFilterDiv = $(`<div class="subFilterDiv_area"></div>`);
 filterDiv.append(subFilterDiv);
@@ -323,6 +323,8 @@ function showMovieDetails(movie) {
 
   const backBtn = $("#backBtn");
   backBtn.on("click", () => {
+    filterDiv.show();
+    searchDiv.show();
     displayMovies(currentMovies);
   });
 
@@ -435,44 +437,44 @@ mainPageBtn.on("click", () => {
   filterMoviesByCategory("Main Page");
 });
 actionBtn.on("click", () => {
-    filterDiv.hide();
-    searchDiv.hide();
+  filterDiv.show();
+  searchDiv.show();
   subFilterDiv.empty();
   filterMoviesByCategory("Action");
 });
 comedyBtn.on("click", () => {
-    filterDiv.hide();
-    searchDiv.hide();
+  filterDiv.show();
+  searchDiv.show();
   subFilterDiv.empty();
   filterMoviesByCategory("Comedy");
 });
 horrorBtn.on("click", () => {
-    filterDiv.hide();
-    searchDiv.hide();
+  filterDiv.show();
+  searchDiv.show();
   subFilterDiv.empty();
   filterMoviesByCategory("Horror");
 });
 dramaBtn.on("click", () => {
-    filterDiv.hide();
-    searchDiv.hide();
+  filterDiv.show();
+  searchDiv.show();
   subFilterDiv.empty();
   filterMoviesByCategory("Drama");
 });
 animeBtn.on("click", () => {
-    filterDiv.hide();
-    searchDiv.hide();
+  filterDiv.show();
+  searchDiv.show();
   subFilterDiv.empty();
   filterMoviesByCategory("Animation");
 });
 favoritesBtn.on("click", () => {
-    filterDiv.hide();
-    searchDiv.hide();
+  filterDiv.show();
+  searchDiv.show();
   subFilterDiv.empty();
   filterMoviesByCategory("Favorites");
 });
 watchlistBtn.on("click", () => {
-    filterDiv.hide();
-    searchDiv.hide();
+  filterDiv.show();
+  searchDiv.show();
   subFilterDiv.empty();
   filterMoviesByCategory("Watchlist");
 });

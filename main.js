@@ -1,4 +1,3 @@
-
 const movies = [
   {
     id: 1,
@@ -283,11 +282,16 @@ filterDiv.append(subFilterDiv);
 const filterHeadingDiv = $(`<div class="filterHeadingDiv_area"></div>`);
 subFilterDiv.append(filterHeadingDiv);
 
+const showedMoviesDiv = $(`<div class="showedMoviesDiv_area"></div>`);
+filterDiv.append(showedMoviesDiv);
+
 const moviesDiv = $(`<div class="mainDiv_area"></div>`);
 main.append(moviesDiv);
 
 function showMovieDetails(movie) {
   moviesDiv.empty();
+  filterDiv.empty();
+  searchDiv.empty();
   const movieDetailDiv = $(`
       <div class="movie_detail_area">
         <img src=${movie.imageSrc} width="200" height="200">        
@@ -333,8 +337,9 @@ function showMovieDetails(movie) {
 
 function displayMovies(movies) {
   moviesDiv.empty();
+  showedMoviesDiv.empty();
   const numberOfShowedMovies = "Showed Movies : " + currentMovies.length;
-  moviesDiv.prepend(numberOfShowedMovies);
+  showedMoviesDiv.append(numberOfShowedMovies);
   movies.forEach((movie) => {
     const movieDiv = $(`
         <div class="movie_area">
@@ -523,7 +528,9 @@ $("#filter").on("change", function () {
     ratingFilter.on("change", function () {
       filterHeadingDiv.empty();
       const selectedRating = $(this).val();
-      currentMovies = currentMovies.filter((movie) => movie.rate >= selectedRating);
+      currentMovies = currentMovies.filter(
+        (movie) => movie.rate >= selectedRating
+      );
       displayMovies(currentMovies);
       const ratingHeading = "Filtered by: Minimum Rating";
       filterHeadingDiv.append(ratingHeading);

@@ -237,8 +237,14 @@ categoryDiv.append(
   watchlistBtn
 );
 
-const searchDiv = $(`<div class="mainDiv_area"></div>`);
+const searchDiv = $(`<div class="searchDiv_area"></div>`);
 main.append(searchDiv);
+
+const filterDiv = $(`<div class="filterDiv_area"></div>`);
+main.append(filterDiv);
+
+const subFilterDiv = $(`<div class="subFilterDiv_area"></div>`);
+filterDiv.append(subFilterDiv);
 
 const moviesDiv = $(`<div class="mainDiv_area"></div>`);
 main.append(moviesDiv);
@@ -272,15 +278,17 @@ function showMovieDetails(movie) {
   const favBtn = $(".favBtn");
   favBtn.on("click", () => {
     toggleFavorite(movie.id);
-    displayMovies(currentMovies);
-    favBtn.text(favorites.includes(movie.id) ? "Remove from Favorites" : "Favorite");
+    favBtn.text(
+      favorites.includes(movie.id) ? "Remove from Favorites" : "Favorite"
+    );
   });
 
   const watchlistBtn = $(".watchlistBtn");
   watchlistBtn.on("click", () => {
     toggleWatchlist(movie.id);
-    displayMovies(currentMovies);
-    watchlistBtn.text(watchlist.includes(movie.id) ? "Remove from Watchlist" : "Watchlist");
+    watchlistBtn.text(
+      watchlist.includes(movie.id) ? "Remove from Watchlist" : "Watchlist"
+    );
   });
 }
 
@@ -344,45 +352,27 @@ function toggleWatchlist(movieId) {
 let currentMovies = movies;
 displayMovies(currentMovies);
 
-mainPageBtn.on("click", () => {
-  currentMovies = movies;
-  displayMovies(currentMovies);
-});
-
-actionBtn.on("click", () => {
-  currentMovies = movies.filter((movie) => movie.categories.includes("Action"));
-  displayMovies(currentMovies);
-});
-
-comedyBtn.on("click", () => {
-  currentMovies = movies.filter((movie) => movie.categories.includes("Comedy"));
-  displayMovies(currentMovies);
-});
-
-horrorBtn.on("click", () => {
-  currentMovies = movies.filter((movie) => movie.categories.includes("Horror"));
-  displayMovies(currentMovies);
-});
-
-dramaBtn.on("click", () => {
-  currentMovies = movies.filter((movie) => movie.categories.includes("Drama"));
-  displayMovies(currentMovies);
-});
-
-animeBtn.on("click", () => {
-  currentMovies = movies.filter((movie) => movie.categories.includes("Anime"));
-  displayMovies(currentMovies);
-});
-
-favoritesBtn.on("click", () => {
-  currentMovies = movies.filter((movie) => favorites.includes(movie.id));
-  displayMovies(currentMovies);
-});
-
-watchlistBtn.on("click", () => {
-  currentMovies = movies.filter((movie) => watchlist.includes(movie.id));
-  displayMovies(currentMovies);
-});
+function filterMoviesByCategory(category) {
+    if (category === "Main Page") {
+      currentMovies = movies;
+    } else if (category === "Favorites") {
+      currentMovies = movies.filter(movie => favorites.includes(movie.id));
+    } else if (category === "Watchlist") {
+      currentMovies = movies.filter(movie => watchlist.includes(movie.id));
+    } else {
+      currentMovies = movies.filter(movie => movie.categories.includes(category));
+    }
+    displayMovies(currentMovies);
+  }
+  
+  mainPageBtn.on("click", () => filterMoviesByCategory("Main Page"));
+  actionBtn.on("click", () => filterMoviesByCategory("Action"));
+  comedyBtn.on("click", () => filterMoviesByCategory("Comedy"));
+  horrorBtn.on("click", () => filterMoviesByCategory("Horror"));
+  dramaBtn.on("click", () => filterMoviesByCategory("Drama"));
+  animeBtn.on("click", () => filterMoviesByCategory("Anime"));
+  favoritesBtn.on("click", () => filterMoviesByCategory("Favorites"));
+  watchlistBtn.on("click", () => filterMoviesByCategory("Watchlist"));
 
 const searchInput = $(`<input type="text" id="searchInput">`);
 const searchBtn = $(`<button id="searchBtn">Search</button>`);
@@ -395,4 +385,70 @@ searchBtn.on("click", () => {
     movie.movieName.toLowerCase().includes(searchTerm)
   );
   displayMovies(currentMovies);
+});
+
+const filter = $('<select id="filter"></select>');
+filterDiv.prepend(filter);
+
+const itemsFilter = [
+  { value: "", text: "Filter" },
+  { value: "1", text: "Release Year" },
+  { value: "2", text: "Rating" },
+  { value: "3", text: "Duration" },
+];
+
+itemsFilter.forEach((item) => {
+  const option = $("<option></option>").val(item.value).text(item.text);
+  filter.append(option);
+});
+
+$("#filter").on("change", function () {
+  selectedItem = $(this).val();
+
+  if (selectedItem === `1`) {
+    subFilterDiv.empty();
+    const releaseYearFilter = $('<select id="releaseYearFilter"></select>');
+    subFilterDiv.append(releaseYearFilter);
+
+    const defaultYearOption = $("<option></option>")
+      .val("")
+      .text("Choose Year");
+    releaseYearFilter.append(defaultYearOption);
+
+    for (let i = 1980, j = 1; i < 2025; i++, j++) {
+      const releaseYearoption = $("<option></option>").val(j).text(i);
+      releaseYearFilter.append(releaseYearoption);
+    }
+  } else if (selectedItem === `2`) {
+    subFilterDiv.empty();
+    const ratingFilter = $('<select id="ratingFilter"></select>');
+    subFilterDiv.append(ratingFilter);
+
+    const defaultRatingOption = $("<option></option>")
+      .val("")
+      .text("Choose Rate");
+    ratingFilter.append(defaultRatingOption);
+
+    for (let i = 1; i < 11; i++) {
+      const raringoption = $("<option></option>").val(i).text(i);
+      ratingFilter.append(raringoption);
+    }
+  }
+  else if (selectedItem === `3`) {
+    subFilterDiv.empty();
+    const durationFilter = $('<select id="durationFilter"></select>');
+    subFilterDiv.append(durationFilter);
+
+      const durationitemsFilter = [
+        { value: "", text: "Choose Duration" },
+        { value: "1", text: "90 Minuites" },
+        { value: "2", text: "(90 - 120) Minuites" },
+        { value: "3", text: "More than 120 Minuites" },
+      ];
+      
+      durationitemsFilter.forEach((item) => {
+        const durationOption = $("<option></option>").val(item.value).text(item.text);
+        durationFilter.append(durationOption);
+      });
+  }
 });

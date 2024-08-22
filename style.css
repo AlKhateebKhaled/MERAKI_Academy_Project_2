@@ -16,12 +16,24 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
     font-size: 30px;
     margin: 0;
+    
   }
     
   main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     padding: 20px;
+    gap: 10px;
   }
-  
+
+  .categoryDiv{
+    display: grid;
+    height: 100%;
+    width: 50px;
+  }
+  .mainScreenDiv{
+    
+  }
   .searchDiv_area {
     margin-bottom: 20px;
   }
@@ -48,9 +60,9 @@
   }
   
   .mainDiv_area {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    display: grid;
+    grid-template-columns:repeat(3,1fr);
+    column-gap:space-between;
   }
   
   .movie_area {
@@ -58,7 +70,7 @@
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     padding: 10px;
-    width: 200px;
+    width: 300px;
     text-align: center;
   }
   
@@ -79,14 +91,27 @@
     text-align: left
   }
   
+  .movieinfo_area{
+    padding: 5px;
+    height: 550px;
+
+  }
+
+
   button {
     padding: 8px 12px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     margin: 5px;
+    font-size: 20px;
+    width: 150px;
   }
-  
+
+  button:hover {
+    background-color: #f1c40f;
+  }
+
   button.favBtn {
     background-color: #f1c40f;
     color: #333;
@@ -98,7 +123,7 @@
   
   button.watchlistBtn {
     background-color: #3498db;
-    color: #fff;
+    color: #131212;
   }
   
   button.watchlistBtn:hover {
@@ -135,3 +160,34 @@
     background-color: #c0392b;
   }
   
+
+
+  select {
+    width: 30%;
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    appearance: none;
+    cursor: pointer;
+  }
+
+  
+  select:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  select option {
+    padding: 10px;
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+  }
+  
+  #filter, #releaseYearFilter, #ratingFilter, #durationFilter {
+    margin-bottom: 15px;
+    background-color: #f9f9f9;}
+

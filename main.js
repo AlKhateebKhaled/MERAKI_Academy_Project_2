@@ -270,11 +270,20 @@ categoryDiv.append(
   watchlistBtn
 );
 
+const mainScreenDiv = $(`<div class="mainScreenDiv"></div>`);
+main.append(mainScreenDiv);
+
+const moviesheaderDiv = $(`<div class="moviesheaderDiv"></div>`);
+mainScreenDiv.append(moviesheaderDiv);
+
+const moviesDiv = $(`<div class="moviesDiv"></div>`);
+mainScreenDiv.append(moviesDiv);
+
 const searchDiv = $(`<div class="searchDiv_area"></div>`);
-main.append(searchDiv);
+moviesheaderDiv.append(searchDiv);
 
 const filterDiv = $(`<div class="filterDiv_area"></div>`);
-main.append(filterDiv);
+searchDiv.append(filterDiv);
 
 const subFilterDiv = $(`<div class="subFilterDiv_area"></div>`);
 filterDiv.append(subFilterDiv);
@@ -285,8 +294,7 @@ subFilterDiv.append(filterHeadingDiv);
 const showedMoviesDiv = $(`<div class="showedMoviesDiv_area"></div>`);
 filterDiv.append(showedMoviesDiv);
 
-const moviesDiv = $(`<div class="mainDiv_area"></div>`);
-main.append(moviesDiv);
+
 
 function showMovieDetails(movie) {
   moviesDiv.empty();
@@ -343,6 +351,7 @@ function displayMovies(movies) {
   movies.forEach((movie) => {
     const movieDiv = $(`
         <div class="movie_area">
+        <div class="movieinfo_area">
           <img src=${movie.imageSrc} width="200" height="200">        
           <h2>${movie.movieName}</h2>
           <p><strong>Actors: </strong>${movie.actors.join(", ")}</p>
@@ -351,6 +360,8 @@ function displayMovies(movies) {
           <p><strong>Duration: </strong>${movie.duration} Minuites</p>
           <p><strong>Rate: </strong>${movie.rate}</p>
           <p><strong>Categories: </strong>${movie.categories.join(", ")}</p>
+          </div>
+        <div class="movieBtns_area">
           <button class="detailsBtn">Details</button>
           <button class="favBtn">${
             favorites.includes(movie.id) ? "Remove from Favorites" : "Favorite"
@@ -358,6 +369,7 @@ function displayMovies(movies) {
           <button class="watchlistBtn">${
             watchlist.includes(movie.id) ? "Remove from Watchlist" : "Watchlist"
           }</button>
+        </div>
         </div>
       `);
 
@@ -451,8 +463,8 @@ watchlistBtn.on("click", () => {
 
 const searchInput = $(`<input type="text" id="searchInput">`);
 const searchBtn = $(`<button id="searchBtn">Search</button>`);
-searchDiv.prepend(searchBtn);
 searchDiv.prepend(searchInput);
+searchDiv.prepend(searchBtn);
 
 searchBtn.on("click", () => {
   const searchTerm = searchInput.val().toLowerCase();

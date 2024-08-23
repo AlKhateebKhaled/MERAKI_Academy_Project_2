@@ -437,22 +437,97 @@ function toggleWatchlist(movieId) {
 let currentMovies = movies;
 displayMovies(currentMovies);
 
+let currentCategory = "Main Page";
+
 function filterMoviesByCategory(category) {
   if (category === "Main Page") {
     currentMovies = movies;
+    currentCategory = "Main Page";
   } else if (category === "Favorites") {
+    currentCategory = "Favorites";
     currentMovies = movies.filter((movie) => favorites.includes(movie.id));
   } else if (category === "Watchlist") {
+    currentCategory = "Watchlist";
     currentMovies = movies.filter((movie) => watchlist.includes(movie.id));
-  } else {
+  } else if (category === "Action") {
+    currentCategory = "Action";
     currentMovies = movies.filter((movie) =>
       movie.categories.includes(category)
+    );
+  } else if (category === "Comedy") {
+    currentCategory = "Comedy";
+    currentMovies = movies.filter((movie) =>
+      movie.categories.includes(category)
+    );
+  } else if (category === "Horror") {
+    currentCategory = "Horror";
+    currentMovies = movies.filter((movie) =>
+      movie.categories.includes(category)
+    );
+  } else if (category === "Drama") {
+    currentCategory = "Drama";
+    currentMovies = movies.filter((movie) =>
+      movie.categories.includes(category)
+    );
+  } else if (category === "Animation") {
+    currentCategory = "Animation";
+    currentMovies = movies.filter((movie) =>
+      movie.categories.includes(category)
+    );
+  } else if (category === "Search") {
+    const searchTerm = searchInput.val().toLowerCase();
+    currentMovies = movies.filter((movie) =>
+      movie.movieName.toLowerCase().includes(searchTerm)
     );
   }
   displayMovies(currentMovies);
 }
 
+function getcurrentMoviesByCategory(category) {
+  if (category === "Main Page") {
+    currentMovies = movies;
+    currentCategory = "Main Page";
+  } else if (category === "Favorites") {
+    currentCategory = "Favorites";
+    currentMovies = movies.filter((movie) => favorites.includes(movie.id));
+  } else if (category === "Watchlist") {
+    currentCategory = "Watchlist";
+    currentMovies = movies.filter((movie) => watchlist.includes(movie.id));
+  } else if (category === "Action") {
+    currentCategory = "Action";
+    currentMovies = movies.filter((movie) =>
+      movie.categories.includes(category)
+    );
+  } else if (category === "Comedy") {
+    currentCategory = "Comedy";
+    currentMovies = movies.filter((movie) =>
+      movie.categories.includes(category)
+    );
+  } else if (category === "Horror") {
+    currentCategory = "Horror";
+    currentMovies = movies.filter((movie) =>
+      movie.categories.includes(category)
+    );
+  } else if (category === "Drama") {
+    currentCategory = "Drama";
+    currentMovies = movies.filter((movie) =>
+      movie.categories.includes(category)
+    );
+  } else if (category === "Animation") {
+    currentCategory = "Animation";
+    currentMovies = movies.filter((movie) =>
+      movie.categories.includes(category)
+    );
+  } else if (category === "Search") {
+    const searchTerm = searchInput.val().toLowerCase();
+    currentMovies = movies.filter((movie) =>
+      movie.movieName.toLowerCase().includes(searchTerm)
+    );
+  }
+}
+
 mainPageBtn.on("click", () => {
+  $("#filter").val("");
   nav = "other";
   filterDiv.show();
   searchDiv.show();
@@ -460,6 +535,7 @@ mainPageBtn.on("click", () => {
   filterMoviesByCategory("Main Page");
 });
 actionBtn.on("click", () => {
+  $("#filter").val("");
   nav = "other";
   filterDiv.show();
   searchDiv.show();
@@ -467,6 +543,7 @@ actionBtn.on("click", () => {
   filterMoviesByCategory("Action");
 });
 comedyBtn.on("click", () => {
+  $("#filter").val("");
   nav = "other";
   filterDiv.show();
   searchDiv.show();
@@ -474,6 +551,7 @@ comedyBtn.on("click", () => {
   filterMoviesByCategory("Comedy");
 });
 horrorBtn.on("click", () => {
+  $("#filter").val("");
   nav = "other";
   filterDiv.show();
   searchDiv.show();
@@ -481,6 +559,7 @@ horrorBtn.on("click", () => {
   filterMoviesByCategory("Horror");
 });
 dramaBtn.on("click", () => {
+  $("#filter").val("");
   nav = "other";
   filterDiv.show();
   searchDiv.show();
@@ -488,6 +567,7 @@ dramaBtn.on("click", () => {
   filterMoviesByCategory("Drama");
 });
 animeBtn.on("click", () => {
+  $("#filter").val("");
   nav = "other";
   filterDiv.show();
   searchDiv.show();
@@ -495,6 +575,7 @@ animeBtn.on("click", () => {
   filterMoviesByCategory("Animation");
 });
 favoritesBtn.on("click", () => {
+  $("#filter").val("");
   nav = "favorites";
   filterDiv.show();
   searchDiv.show();
@@ -502,6 +583,7 @@ favoritesBtn.on("click", () => {
   filterMoviesByCategory("Favorites");
 });
 watchlistBtn.on("click", () => {
+  $("#filter").val("");
   nav = "watchlist";
   filterDiv.show();
   searchDiv.show();
@@ -515,21 +597,19 @@ searchDiv.prepend(searchInput);
 searchDiv.prepend(searchBtn);
 
 searchBtn.on("click", () => {
-  const searchTerm = searchInput.val().toLowerCase();
-  currentMovies = movies.filter((movie) =>
-    movie.movieName.toLowerCase().includes(searchTerm)
-  );
-  displayMovies(currentMovies);
+  $("#filter").val("");
+  currentCategory = "Search";
+  filterMoviesByCategory("Search");
 });
 
 const filter = $('<select id="filter"></select>');
 filterDiv.prepend(filter);
 
 const itemsFilter = [
-  { value: "", text: "Filter" },
-  { value: "1", text: "Release Year" },
-  { value: "2", text: "Minimum Rating" },
-  { value: "3", text: "Duration" },
+  { value: "", text: "No filter" },
+  { value: "2", text: "Release Year" },
+  { value: "3", text: "Minimum Rating" },
+  { value: "4", text: "Duration" },
 ];
 
 itemsFilter.forEach((item) => {
@@ -540,7 +620,7 @@ itemsFilter.forEach((item) => {
 $("#filter").on("change", function () {
   selectedItem = $(this).val();
 
-  if (selectedItem === `1`) {
+  if (selectedItem === `2`) {
     subFilterDiv.empty();
     filterHeadingDiv.empty();
     subFilterDiv.append(filterHeadingDiv);
@@ -560,14 +640,15 @@ $("#filter").on("change", function () {
     releaseYearFilter.on("change", function () {
       filterHeadingDiv.empty();
       const selectedYear = $(this).val();
-      currentMovies = movies.filter(
-        (movie) => movies.releaseYear == selectedYear
+      getcurrentMoviesByCategory(currentCategory)
+      currentMovies = currentCategory.filter(
+        (movie) => movie.releaseYear == selectedYear
       );
       displayMovies(currentMovies);
       const releasedYearHeading = "Filtered by: Release Year";
       filterHeadingDiv.append(releasedYearHeading);
     });
-  } else if (selectedItem === `2`) {
+  } else if (selectedItem === `3`) {
     subFilterDiv.empty();
     filterHeadingDiv.empty();
     subFilterDiv.append(filterHeadingDiv);
@@ -588,12 +669,13 @@ $("#filter").on("change", function () {
     ratingFilter.on("change", function () {
       filterHeadingDiv.empty();
       const selectedRating = $(this).val();
-      currentMovies = movies.filter((movie) => movie.rate >= selectedRating);
+      getcurrentMoviesByCategory(currentCategory)
+      currentMovies = currentMovies.filter((movie) => movie.rate >= selectedRating);
       displayMovies(currentMovies);
       const ratingHeading = "Filtered by: Minimum Rating";
       filterHeadingDiv.append(ratingHeading);
     });
-  } else if (selectedItem === `3`) {
+  } else if (selectedItem === `4`) {
     subFilterDiv.empty();
     filterHeadingDiv.empty();
     subFilterDiv.append(filterHeadingDiv);
@@ -619,24 +701,27 @@ $("#filter").on("change", function () {
 
       const selectedDuration = $(this).val();
       if (selectedDuration === "1") {
-        currentMovies = movies.filter((movie) => movie.duration <= 90);
+        getcurrentMoviesByCategory(currentCategory)
+        currentMovies = currentMovies.filter((movie) => movie.duration <= 90);
         const durationHeading = "Filtered by: Duration";
         filterHeadingDiv.append(durationHeading);
       } else if (selectedDuration === "2") {
-        currentMovies = movies.filter(
+        getcurrentMoviesByCategory(currentCategory)
+        currentMovies = currentMovies.filter(
           (movie) => movie.duration > 90 && movie.duration <= 120
         );
         const durationHeading = "Filtered by: Duration";
         filterHeadingDiv.append(durationHeading);
       } else if (selectedDuration === "3") {
-        currentMovies = movies.filter((movie) => movie.duration > 120);
+        getcurrentMoviesByCategory(currentCategory)
+        currentMovies = currentMovies.filter((movie) => movie.duration > 120);
         const durationHeading = "Filtered by: Duration";
         filterHeadingDiv.append(durationHeading);
       }
       displayMovies(currentMovies);
     });
-  } else {
+  } else if (selectedItem === ``) {
     subFilterDiv.empty();
-    displayMovies(currentMovies);
+    filterMoviesByCategory(currentCategory);
   }
 });

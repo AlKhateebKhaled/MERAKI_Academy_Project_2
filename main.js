@@ -241,8 +241,9 @@ const movies = [
   },
 ];
 
-let favorites = [];
-let watchlist = [];
+let favorites = localStorage.getItem("favorites") || [];
+let watchlist = localStorage.getItem("watchlist") || [];
+let currentFavoritesMovies = localStorage.getItem("currentFavoritesMovies") || [];
 
 // Code:
 
@@ -418,8 +419,15 @@ function toggleFavorite(movieId) {
   } else {
     favorites.push(movieId);
   }
+
+  localStorage.setItem("favorites", JSON.stringify(favorites));
   currentFavoritesMovies = movies.filter((movie) =>
     favorites.includes(movie.id)
+  );
+
+  localStorage.setItem(
+    "currentFavoritesMovies",
+    JSON.stringify(currentFavoritesMovies)
   );
 }
 
@@ -640,7 +648,7 @@ $("#filter").on("change", function () {
     releaseYearFilter.on("change", function () {
       filterHeadingDiv.empty();
       const selectedYear = $(this).val();
-      getcurrentMoviesByCategory(currentCategory)
+      getcurrentMoviesByCategory(currentCategory);
       currentMovies = currentCategory.filter(
         (movie) => movie.releaseYear == selectedYear
       );
@@ -669,8 +677,10 @@ $("#filter").on("change", function () {
     ratingFilter.on("change", function () {
       filterHeadingDiv.empty();
       const selectedRating = $(this).val();
-      getcurrentMoviesByCategory(currentCategory)
-      currentMovies = currentMovies.filter((movie) => movie.rate >= selectedRating);
+      getcurrentMoviesByCategory(currentCategory);
+      currentMovies = currentMovies.filter(
+        (movie) => movie.rate >= selectedRating
+      );
       displayMovies(currentMovies);
       const ratingHeading = "Filtered by: Minimum Rating";
       filterHeadingDiv.append(ratingHeading);
@@ -701,19 +711,19 @@ $("#filter").on("change", function () {
 
       const selectedDuration = $(this).val();
       if (selectedDuration === "1") {
-        getcurrentMoviesByCategory(currentCategory)
+        getcurrentMoviesByCategory(currentCategory);
         currentMovies = currentMovies.filter((movie) => movie.duration <= 90);
         const durationHeading = "Filtered by: Duration";
         filterHeadingDiv.append(durationHeading);
       } else if (selectedDuration === "2") {
-        getcurrentMoviesByCategory(currentCategory)
+        getcurrentMoviesByCategory(currentCategory);
         currentMovies = currentMovies.filter(
           (movie) => movie.duration > 90 && movie.duration <= 120
         );
         const durationHeading = "Filtered by: Duration";
         filterHeadingDiv.append(durationHeading);
       } else if (selectedDuration === "3") {
-        getcurrentMoviesByCategory(currentCategory)
+        getcurrentMoviesByCategory(currentCategory);
         currentMovies = currentMovies.filter((movie) => movie.duration > 120);
         const durationHeading = "Filtered by: Duration";
         filterHeadingDiv.append(durationHeading);
@@ -725,3 +735,81 @@ $("#filter").on("change", function () {
     filterMoviesByCategory(currentCategory);
   }
 });
+
+/*
+const movies = [
+  {
+    id: 18,
+    movieName: "Your Name",
+    actors: ["Ryunosuke Kamiki", "Mone Kamishiraishi", "Ryo Narita"],
+    imageSrc: "Your_Name.jpg",
+    description:
+      "Two teenagers who swap bodies discover a connection between them as they uncover a series of mysterious events.",
+    rate: 9,
+    categories: ["Animation", "Drama", "Fantasy"],
+    releaseYear: 2016,
+    duration: 106,
+  },
+  {
+    id: 19,
+    movieName: "Deadpool",
+    actors: ["Ryan Reynolds", "Morena Baccarin", "T.J. Miller"],
+    imageSrc: "Deadpool.jpg",
+    description:
+      "A former special forces operative turned mercenary undergoes experimental treatment to become the antihero Deadpool.",
+    rate: 8,
+    categories: ["Action", "Adventure", "Comedy"],
+    releaseYear: 2016,
+    duration: 108,
+  },
+  {
+    id: 20,
+    movieName: "The Shining",
+    actors: ["Jack Nicholson", "Shelley Duvall", "Danny Lloyd"],
+    imageSrc: "The_Shining.jpg",
+    description:
+      "A family heads to an isolated hotel for the winter where an evil presence influences the father into violence.",
+    rate: 9,
+    categories: ["Drama", "Horror"],
+    releaseYear: 1980,
+    duration: 146,
+  },
+];
+
+let favorites = localStorage.getItem("favorites");
+let watchlist = localStorage.getItem("watchlist");
+let currentFavoritesMovies = localStorage.getItem("currentFavoritesMovies");
+
+
+    const favBtn = movieDiv.find(".favBtn");
+    favBtn.on("click", () => {
+      toggleFavorite(movie.id);
+      if (nav === "other") {
+        displayMovies(currentMovies);
+      } else if (nav === "favorites") {
+        displayMovies(currentFavoritesMovies);
+      } else {
+        displayMovies(currentWatchlistMovies);
+      }
+    });
+
+function toggleFavorite(movieId) {
+  if (favorites.includes(movieId)) {
+    favorites = favorites.filter((id) => id !== movieId);
+    let favoritesToString = JSON.stringify(favorites);
+    localStorage.setItem("favorites", favoritesToString);
+  } else {
+    favorites.push(movieId);
+    let favoritesToString = JSON.stringify(favorites);
+    localStorage.setItem("favorites", favoritesToString);
+  }
+  currentFavoritesMovies = movies.filter((movie) =>
+    favorites.includes(movie.id)
+  );
+  let currentFavoritesMoviesToString = JSON.stringify(currentFavoritesMovies);
+  localStorage.setItem(
+    "currentFavoritesMovies",
+    currentFavoritesMoviesToString
+  );
+}
+  */

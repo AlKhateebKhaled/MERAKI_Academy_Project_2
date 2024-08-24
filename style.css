@@ -109,7 +109,19 @@ button {
   margin-top: 5px;
   margin-bottom: 5px;
   font-size: 20px;
+}
+
+button.mainPageBtn,
+button.actionBtn,
+button.comedyBtn,
+button.horrorBtn,
+button.dramaBtn,
+button.animeBtn,
+button.favoritesBtn,
+button#watchlistBtn1
+{
   width: 150px;
+
 }
 
 button:hover {
@@ -249,6 +261,5 @@ width: 100%;
 }
 
 button#rstar{
-  width: 10px;
   margin-top: 10px;
 }

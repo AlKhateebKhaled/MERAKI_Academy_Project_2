@@ -339,14 +339,14 @@ categoryDiv.append(movieListsDiv);
 const myListsDiv = $(`<div class="myListsDiv"></div>`);
 categoryDiv.append(myListsDiv);
 
-const mainPageBtn = $(`<button>Main Page</button>`);
-const actionBtn = $(`<button>Action</button>`);
-const comedyBtn = $(`<button>Comedy</button>`);
-const horrorBtn = $(`<button>Horror</button>`);
-const dramaBtn = $(`<button>Drama</button>`);
-const animeBtn = $(`<button>Animation</button>`);
-const favoritesBtn = $(`<button>Favorites</button>`);
-const watchlistBtn = $(`<button>Watchlist</button>`);
+const mainPageBtn = $(`<button class ="mainPageBtn">Main Page</button>`);
+const actionBtn = $(`<button class ="actionBtn">Action</button>`);
+const comedyBtn = $(`<button class ="comedyBtn">Comedy</button>`);
+const horrorBtn = $(`<button class ="horrorBtn">Horror</button>`);
+const dramaBtn = $(`<button class ="dramaBtn">Drama</button>`);
+const animeBtn = $(`<button class ="animeBtn">Animation</button>`);
+const favoritesBtn = $(`<button class ="favoritesBtn">Favorites</button>`);
+const watchlistBtn = $(`<button id ="watchlistBtn1">Watchlist</button>`);
 movieListsDiv.append(
   mainPageBtn,
   actionBtn,

@@ -241,9 +241,12 @@ const movies = [
   },
 ];
 
-let favorites = localStorage.getItem("favorites") || [];
-let watchlist = localStorage.getItem("watchlist") || [];
-let currentFavoritesMovies = localStorage.getItem("currentFavoritesMovies") || [];
+let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+let watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
+let currentFavoritesMovies =
+  JSON.parse(localStorage.getItem("currentFavoritesMovies")) || [];
+let currentWatchlistMovies =
+  JSON.parse(localStorage.getItem("currentWatchlistMovies")) || [];
 
 // Code:
 
@@ -437,8 +440,13 @@ function toggleWatchlist(movieId) {
   } else {
     watchlist.push(movieId);
   }
+  localStorage.setItem("watchlist", JSON.stringify(watchlist));
   currentWatchlistMovies = movies.filter((movie) =>
     watchlist.includes(movie.id)
+  );
+  localStorage.setItem(
+    "currentWatchlistMovies",
+    JSON.stringify(currentWatchlistMovies)
   );
 }
 
@@ -605,6 +613,7 @@ searchDiv.prepend(searchInput);
 searchDiv.prepend(searchBtn);
 
 searchBtn.on("click", () => {
+  subFilterDiv.empty();
   $("#filter").val("");
   currentCategory = "Search";
   filterMoviesByCategory("Search");

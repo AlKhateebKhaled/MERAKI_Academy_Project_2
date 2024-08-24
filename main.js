@@ -10,6 +10,9 @@ const movies = [
     categories: ["Action", "Crime", "Drama"],
     releaseYear: 2008,
     duration: 152,
+    director: "Christopher Nolan",
+    boxOffice: "$1.005 billion",
+    trailerLink: "https://www.youtube.com/watch?v=EXeTwQWrcwY",
   },
   {
     id: 2,
@@ -22,6 +25,9 @@ const movies = [
     categories: ["Action", "Adventure", "Sci-Fi"],
     releaseYear: 2010,
     duration: 148,
+    director: "Christopher Nolan",
+    boxOffice: "$836.8 million",
+    trailerLink: "https://www.youtube.com/watch?v=YoHD9XEInc0",
   },
   {
     id: 3,
@@ -34,6 +40,9 @@ const movies = [
     categories: ["Animation", "Adventure", "Comedy"],
     releaseYear: 1995,
     duration: 81,
+    director: "John Lasseter",
+    boxOffice: "$373.6 million",
+    trailerLink: "https://www.youtube.com/watch?v=KYz2wyBy3kc",
   },
   {
     id: 4,
@@ -46,6 +55,9 @@ const movies = [
     categories: ["Comedy", "Drama", "Thriller"],
     releaseYear: 2019,
     duration: 132,
+    director: "Bong Joon-ho",
+    boxOffice: "$263.1 million",
+    trailerLink: "https://www.youtube.com/watch?v=5xH0HfJHsaY",
   },
   {
     id: 5,
@@ -58,6 +70,9 @@ const movies = [
     categories: ["Horror", "Mystery", "Thriller"],
     releaseYear: 2013,
     duration: 112,
+    director: "James Wan",
+    boxOffice: "$319.5 million",
+    trailerLink: "https://www.youtube.com/watch?v=k10ETZ41q5o",
   },
   {
     id: 6,
@@ -70,6 +85,9 @@ const movies = [
     categories: ["Animation", "Adventure", "Fantasy"],
     releaseYear: 2001,
     duration: 125,
+    director: "Hayao Miyazaki",
+    boxOffice: "$395.8 million",
+    trailerLink: "https://www.youtube.com/watch?v=ByXuk9QqQkk",
   },
   {
     id: 7,
@@ -82,6 +100,9 @@ const movies = [
     categories: ["Action", "Adventure", "Drama"],
     releaseYear: 2019,
     duration: 181,
+    director: "Anthony and Joe Russo",
+    boxOffice: "$2.798 billion",
+    trailerLink: "https://www.youtube.com/watch?v=TcMBFSGVi1c",
   },
   {
     id: 8,
@@ -94,6 +115,9 @@ const movies = [
     categories: ["Comedy"],
     releaseYear: 2009,
     duration: 100,
+    director: "Todd Phillips",
+    boxOffice: "$469.3 million",
+    trailerLink: "https://www.youtube.com/watch?v=tcdUhdOlz9M",
   },
   {
     id: 9,
@@ -106,6 +130,9 @@ const movies = [
     categories: ["Horror", "Mystery", "Thriller"],
     releaseYear: 2017,
     duration: 104,
+    director: "Jordan Peele",
+    boxOffice: "$255.4 million",
+    trailerLink: "https://www.youtube.com/watch?v=DzfpyUB60YY",
   },
   {
     id: 10,
@@ -118,6 +145,9 @@ const movies = [
     categories: ["Action", "Sci-Fi"],
     releaseYear: 1999,
     duration: 136,
+    director: "The Wachowskis",
+    boxOffice: "$466.6 million",
+    trailerLink: "https://www.youtube.com/watch?v=vKQi3bBA1y8",
   },
   {
     id: 11,
@@ -130,6 +160,9 @@ const movies = [
     categories: ["Crime", "Drama"],
     releaseYear: 1994,
     duration: 154,
+    director: "Quentin Tarantino",
+    boxOffice: "$213.9 million",
+    trailerLink: "https://www.youtube.com/watch?v=s7EdQ4FqbhY",
   },
   {
     id: 12,
@@ -142,6 +175,9 @@ const movies = [
     categories: ["Animation", "Adventure", "Comedy"],
     releaseYear: 2003,
     duration: 100,
+    director: "Andrew Stanton",
+    boxOffice: "$940.3 million",
+    trailerLink: "https://www.youtube.com/watch?v=wZdpNglLbt8",
   },
   {
     id: 13,
@@ -154,6 +190,9 @@ const movies = [
     categories: ["Mystery", "Thriller"],
     releaseYear: 2010,
     duration: 138,
+    director: "Martin Scorsese",
+    boxOffice: "$294.8 million",
+    trailerLink: "https://www.youtube.com/watch?v=5iaYLCiq5RM",
   },
   {
     id: 14,
@@ -166,6 +205,9 @@ const movies = [
     categories: ["Drama", "Horror", "Sci-Fi"],
     releaseYear: 2018,
     duration: 90,
+    director: "John Krasinski",
+    boxOffice: "$340.9 million",
+    trailerLink: "https://www.youtube.com/watch?v=WR7cc5t7tv8",
   },
   {
     id: 15,
@@ -178,6 +220,9 @@ const movies = [
     categories: ["Animation", "Family", "Fantasy"],
     releaseYear: 1988,
     duration: 86,
+    director: "Hayao Miyazaki",
+    boxOffice: "$41 million",
+    trailerLink: "https://www.youtube.com/watch?v=92a7Hj0ijLs",
   },
   {
     id: 16,
@@ -190,6 +235,9 @@ const movies = [
     categories: ["Action", "Adventure", "Comedy"],
     releaseYear: 2014,
     duration: 121,
+    director: "James Gunn",
+    boxOffice: "$772.8 million",
+    trailerLink: "https://www.youtube.com/watch?v=d96cjJhvlMA",
   },
   {
     id: 17,
@@ -202,6 +250,9 @@ const movies = [
     categories: ["Horror", "Mystery", "Thriller"],
     releaseYear: 2017,
     duration: 135,
+    director: "Andy Muschietti",
+    boxOffice: "$701.8 million",
+    trailerLink: "https://www.youtube.com/watch?v=hAUTdjf9rko",
   },
   {
     id: 18,
@@ -214,6 +265,9 @@ const movies = [
     categories: ["Animation", "Drama", "Fantasy"],
     releaseYear: 2016,
     duration: 106,
+    director: "Makoto Shinkai",
+    boxOffice: "$380.1 million",
+    trailerLink: "https://www.youtube.com/watch?v=xU47nhruN-Q",
   },
   {
     id: 19,
@@ -226,6 +280,9 @@ const movies = [
     categories: ["Action", "Adventure", "Comedy"],
     releaseYear: 2016,
     duration: 108,
+    director: "Tim Miller",
+    boxOffice: "$782.6 million",
+    trailerLink: "https://www.youtube.com/watch?v=ONHBaC-pfsk",
   },
   {
     id: 20,
@@ -238,6 +295,9 @@ const movies = [
     categories: ["Drama", "Horror"],
     releaseYear: 1980,
     duration: 146,
+    director: "Stanley Kubrick",
+    boxOffice: "$47.3 million",
+    trailerLink: "https://www.youtube.com/watch?v=S014oGZiSdI",
   },
 ];
 
@@ -317,9 +377,12 @@ function showMovieDetails(movie) {
         <p><strong>Actors: </strong>${movie.actors.join(", ")}</p>
         <p><strong>Description: </strong>${movie.description}</p>
         <p><strong>releaseYear: </strong>${movie.releaseYear}</p>
-        <p><strong>Duration: </strong>${movie.duration}</p>
+        <p><strong>Duration: </strong>${movie.duration} min.</p>
         <p><strong>Rate: </strong>${movie.rate}</p>
         <p><strong>Categories: </strong>${movie.categories.join(", ")}</p>
+        <p><strong>Director: </strong>${movie.director}</p>
+        <p><strong>BoxOffice: </strong>${movie.boxOffice}</p>
+        <p><a href=${movie.trailerLink} target="_blank" class="trailer-link"><strong>Trailer</strong></a></p>
         <button id="backBtn">Back to List</button>
         <button class="favBtn">${
           favorites.includes(movie.id) ? "Remove from Favorites" : "Favorite"
@@ -329,6 +392,7 @@ function showMovieDetails(movie) {
         }</button>
       </div>
     `);
+
   moviesDiv.append(movieDetailDiv);
 
   const backBtn = $("#backBtn");
@@ -744,81 +808,3 @@ $("#filter").on("change", function () {
     filterMoviesByCategory(currentCategory);
   }
 });
-
-/*
-const movies = [
-  {
-    id: 18,
-    movieName: "Your Name",
-    actors: ["Ryunosuke Kamiki", "Mone Kamishiraishi", "Ryo Narita"],
-    imageSrc: "Your_Name.jpg",
-    description:
-      "Two teenagers who swap bodies discover a connection between them as they uncover a series of mysterious events.",
-    rate: 9,
-    categories: ["Animation", "Drama", "Fantasy"],
-    releaseYear: 2016,
-    duration: 106,
-  },
-  {
-    id: 19,
-    movieName: "Deadpool",
-    actors: ["Ryan Reynolds", "Morena Baccarin", "T.J. Miller"],
-    imageSrc: "Deadpool.jpg",
-    description:
-      "A former special forces operative turned mercenary undergoes experimental treatment to become the antihero Deadpool.",
-    rate: 8,
-    categories: ["Action", "Adventure", "Comedy"],
-    releaseYear: 2016,
-    duration: 108,
-  },
-  {
-    id: 20,
-    movieName: "The Shining",
-    actors: ["Jack Nicholson", "Shelley Duvall", "Danny Lloyd"],
-    imageSrc: "The_Shining.jpg",
-    description:
-      "A family heads to an isolated hotel for the winter where an evil presence influences the father into violence.",
-    rate: 9,
-    categories: ["Drama", "Horror"],
-    releaseYear: 1980,
-    duration: 146,
-  },
-];
-
-let favorites = localStorage.getItem("favorites");
-let watchlist = localStorage.getItem("watchlist");
-let currentFavoritesMovies = localStorage.getItem("currentFavoritesMovies");
-
-
-    const favBtn = movieDiv.find(".favBtn");
-    favBtn.on("click", () => {
-      toggleFavorite(movie.id);
-      if (nav === "other") {
-        displayMovies(currentMovies);
-      } else if (nav === "favorites") {
-        displayMovies(currentFavoritesMovies);
-      } else {
-        displayMovies(currentWatchlistMovies);
-      }
-    });
-
-function toggleFavorite(movieId) {
-  if (favorites.includes(movieId)) {
-    favorites = favorites.filter((id) => id !== movieId);
-    let favoritesToString = JSON.stringify(favorites);
-    localStorage.setItem("favorites", favoritesToString);
-  } else {
-    favorites.push(movieId);
-    let favoritesToString = JSON.stringify(favorites);
-    localStorage.setItem("favorites", favoritesToString);
-  }
-  currentFavoritesMovies = movies.filter((movie) =>
-    favorites.includes(movie.id)
-  );
-  let currentFavoritesMoviesToString = JSON.stringify(currentFavoritesMovies);
-  localStorage.setItem(
-    "currentFavoritesMovies",
-    currentFavoritesMoviesToString
-  );
-}
-  */

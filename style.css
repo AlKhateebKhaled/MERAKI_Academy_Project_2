@@ -235,3 +235,6 @@ select option {
   color: #0056b3;
   border-bottom-color: #0056b3;
 }
+.checked {
+  color: orange;
+}

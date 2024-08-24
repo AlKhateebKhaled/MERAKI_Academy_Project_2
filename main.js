@@ -382,7 +382,9 @@ function showMovieDetails(movie) {
         <p><strong>Categories: </strong>${movie.categories.join(", ")}</p>
         <p><strong>Director: </strong>${movie.director}</p>
         <p><strong>BoxOffice: </strong>${movie.boxOffice}</p>
-        <p><a href=${movie.trailerLink} target="_blank" class="trailer-link"><strong>Trailer</strong></a></p>
+        <p><a href=${
+          movie.trailerLink
+        } target="_blank" class="trailer-link"><strong>Trailer</strong></a></p>
         <button id="backBtn">Back to List</button>
         <button class="favBtn">${
           favorites.includes(movie.id) ? "Remove from Favorites" : "Favorite"
@@ -807,4 +809,57 @@ $("#filter").on("change", function () {
     subFilterDiv.empty();
     filterMoviesByCategory(currentCategory);
   }
+});
+let rate = $(`<div class="rate">`);
+
+let stars_1 = $(`<button><span class="fa fa-star"></span></button>
+`);
+let clickedstars_1 =
+  $(`<button><span class="fa fa-star checked"></span></button>
+  `);
+
+myListsDiv.prepend(rate);
+rate.prepend(stars_1);
+rate.prepend(clickedstars_1);
+
+stars_1.show();
+clickedstars_1.hide();
+
+stars_1.on("click", () => {
+  stars_1.hide();
+  clickedstars_1.show();
+});
+
+clickedstars_1.on("click", () => {
+  stars_1.show();
+  stars_2.show();
+  clickedstars_1.hide();
+  clickedstars_2.hide();
+
+});
+
+let stars_2 = $(`<button><span class="fa fa-star"></span></button>
+  `);
+let clickedstars_2 =
+  $(`<button><span class="fa fa-star checked"></span></button>
+    `);
+
+rate.prepend(stars_2);
+rate.prepend(clickedstars_2);
+
+stars_2.show();
+clickedstars_2.hide();
+
+stars_2.on("click", () => {
+  stars_1.hide();
+  stars_2.hide();
+  clickedstars_1.show();
+  clickedstars_2.show();
+});
+
+clickedstars_2.on("click", () => {
+  stars_1.hide();
+  stars_2.show();
+  clickedstars_1.show();
+  clickedstars_2.hide();
 });

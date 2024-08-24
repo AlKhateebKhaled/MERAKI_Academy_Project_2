@@ -174,9 +174,14 @@ button.detailsBtn:hover {
   height: 850px;
 }
 
-.movie_detail_area button {
+button#favBtn{
   width: 250px;
 
+  margin-top: 10px;
+}
+
+button#watchlistBtn{
+  width: 250px;
   margin-top: 10px;
 }
 
@@ -237,4 +242,13 @@ select option {
 }
 .checked {
   color: orange;
+}
+
+.rate{
+width: 100%;
+}
+
+button#rstar{
+  width: 10px;
+  margin-top: 10px;
 }

@@ -314,6 +314,22 @@ const main = $(`main`);
 
 let nav = "";
 
+let rate = $(`<div class="rate"></div>`);
+
+for (let i = 1; i <= 5; i++) {
+  let star = $(
+    `<button class="star" id="star"><span class="fa fa-star"></span></button>`
+  );
+
+  star.on("click", function () {
+    rate.children(".star").find(".fa-star").removeClass("checked");
+
+    rate.children(".star").slice(0, i).find(".fa-star").addClass("checked");
+  });
+
+  rate.append(star);
+}
+
 const categoryDiv = $(`<div class="category_area"></div>`);
 main.append(categoryDiv);
 
@@ -386,15 +402,16 @@ function showMovieDetails(movie) {
           movie.trailerLink
         } target="_blank" class="trailer-link"><strong>Trailer</strong></a></p>
         <button id="backBtn">Back to List</button>
-        <button class="favBtn">${
+        <button class="favBtn" id ="favBtn">${
           favorites.includes(movie.id) ? "Remove from Favorites" : "Favorite"
         }</button>
-        <button class="watchlistBtn">${
+        <button class="watchlistBtn" id="watchlistBtn">${
           watchlist.includes(movie.id) ? "Remove from Watchlist" : "Watchlist"
         }</button>
       </div>
     `);
 
+  movieDetailDiv.append(rate);
   moviesDiv.append(movieDetailDiv);
 
   const backBtn = $("#backBtn");
@@ -447,7 +464,6 @@ function displayMovies(movies) {
         </div>
         </div>
       `);
-
     moviesDiv.append(movieDiv);
 
     const detailsBtn = movieDiv.find(".detailsBtn");
@@ -809,57 +825,4 @@ $("#filter").on("change", function () {
     subFilterDiv.empty();
     filterMoviesByCategory(currentCategory);
   }
-});
-let rate = $(`<div class="rate">`);
-
-let stars_1 = $(`<button><span class="fa fa-star"></span></button>
-`);
-let clickedstars_1 =
-  $(`<button><span class="fa fa-star checked"></span></button>
-  `);
-
-myListsDiv.prepend(rate);
-rate.prepend(stars_1);
-rate.prepend(clickedstars_1);
-
-stars_1.show();
-clickedstars_1.hide();
-
-stars_1.on("click", () => {
-  stars_1.hide();
-  clickedstars_1.show();
-});
-
-clickedstars_1.on("click", () => {
-  stars_1.show();
-  stars_2.show();
-  clickedstars_1.hide();
-  clickedstars_2.hide();
-
-});
-
-let stars_2 = $(`<button><span class="fa fa-star"></span></button>
-  `);
-let clickedstars_2 =
-  $(`<button><span class="fa fa-star checked"></span></button>
-    `);
-
-rate.prepend(stars_2);
-rate.prepend(clickedstars_2);
-
-stars_2.show();
-clickedstars_2.hide();
-
-stars_2.on("click", () => {
-  stars_1.hide();
-  stars_2.hide();
-  clickedstars_1.show();
-  clickedstars_2.show();
-});
-
-clickedstars_2.on("click", () => {
-  stars_1.hide();
-  stars_2.show();
-  clickedstars_1.show();
-  clickedstars_2.hide();
 });

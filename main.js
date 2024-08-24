@@ -314,22 +314,6 @@ const main = $(`main`);
 
 let nav = "";
 
-let rate = $(`<div class="rate"></div>`);
-
-for (let i = 1; i <= 5; i++) {
-  let star = $(
-    `<button class="star" id="star"><span class="fa fa-star"></span></button>`
-  );
-
-  star.on("click", function () {
-    rate.children(".star").find(".fa-star").removeClass("checked");
-
-    rate.children(".star").slice(0, i).find(".fa-star").addClass("checked");
-  });
-
-  rate.append(star);
-}
-
 const categoryDiv = $(`<div class="category_area"></div>`);
 main.append(categoryDiv);
 
@@ -410,6 +394,19 @@ function showMovieDetails(movie) {
         }</button>
       </div>
     `);
+  let rate = $(`<div class="rate"></div>`);
+
+  for (let i = 1; i <= 5; i++) {
+    let star = $(
+      `<button class="star" id="star"><span class="fa fa-star"></span></button>`
+    );
+
+    star.on("click", function () {
+      rate.children(".star").find(".fa-star").removeClass("checked");
+      rate.children(".star").slice(0, i).find(".fa-star").addClass("checked");
+    });
+    rate.append(star);
+  }
 
   movieDetailDiv.append(rate);
   moviesDiv.append(movieDetailDiv);
@@ -438,6 +435,7 @@ function showMovieDetails(movie) {
   });
 }
 
+
 function displayMovies(movies) {
   moviesDiv.empty();
   showedMoviesDiv.empty();
@@ -464,6 +462,7 @@ function displayMovies(movies) {
         </div>
         </div>
       `);
+
     moviesDiv.append(movieDiv);
 
     const detailsBtn = movieDiv.find(".detailsBtn");

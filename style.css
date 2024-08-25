@@ -2,13 +2,13 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  color: #333;
+  background-color: #1a1a1a; 
+  color: #f5c518; 
 }
 
 header {
-  background-color: #111;
-  color: #f1c40f;
+  background-color: #000; 
+  color: #f5c518; 
   padding: 10px 20px;
   position: sticky;
   top: 0;
@@ -34,17 +34,18 @@ main {
   grid-template-columns: 1fr 1fr;
   margin-bottom: 20px;
 }
+
 .mainScreenDiv {
   display: grid;
 }
 
-.mainScreenHeadingDiv{
+.mainScreenHeadingDiv {
   font-size: 25px;
   font-weight: bolder;
   text-align: center;
   margin-bottom: 20px;
-  background-color: #111;
-  color: #f1c40f;
+  background-color: #000; 
+  color: #f5c518; 
   padding: 10px 20px;
   position: sticky;
   top: 10px;
@@ -59,7 +60,7 @@ main {
 #searchInput {
   padding: 8px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  border: 1px solid #333; 
   border-radius: 4px;
 }
 
@@ -67,14 +68,14 @@ main {
   padding: 8px 12px;
   font-size: 16px;
   border: none;
-  background-color: #111;
-  color: #fff;
+  background-color: #000; 
+  color: #f5c518; 
   border-radius: 4px;
   cursor: pointer;
 }
 
 #searchBtn:hover {
-  background-color: #333;
+  background-color: #333; 
 }
 
 .moviesDiv {
@@ -85,17 +86,18 @@ main {
 }
 
 .movie_area {
-  background: #fff;
+  background: #000; 
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   padding: 10px;
   width: 300px;
   text-align: center;
+  color: #f5c518; 
 }
 
 .movie_area img {
   width: 100%;
-  height: 300px;
+  height: 200px;
   border-radius: 4px;
 }
 
@@ -108,11 +110,12 @@ main {
   font-size: 14px;
   margin: 5px 0;
   text-align: left;
+  color: #ddd; 
 }
 
 .movieinfo_area {
   padding: 5px;
-  height: 410px;
+  height: 310px;
 }
 
 button {
@@ -135,47 +138,65 @@ button.favoritesBtn,
 button#watchlistBtn1
 {
   width: 150px;
+  background-color: #000; 
+  color: #f5c518; 
+}
+
+button:hover {
+  background-color: #f5c518; 
+  color: #000; 
+}
+
+button#watchlistBtn1:hover{
+  background-color: #f1c40f;
+  color: #000; 
 
 }
 
 button:hover {
   background-color: #f1c40f;
 }
-
 button.favBtn {
   width: 100%;
-  background-color: #f1c40f;
-  color: #333;
+  background-color: #f5c518; 
+  color: #000; 
 }
 
 button.favBtn:hover {
-  background-color: #f39c12;
+  background-color: #f39c12; /
 }
 
 button.watchlistBtn {
   width: 100%;
-  background-color: #3498db;
-  color: #131212;
+  background-color: #3498db; 
+  color: #000; 
 }
 
 button.watchlistBtn:hover {
-  background-color: #2980b9;
+  background-color: #2980b9; 
 }
+
 button.detailsBtn {
   width: 100%;
+  background-color: #333; 
+  color: #f5c518; 
 }
+
 button.detailsBtn:hover {
-  background-color: #b9bdbe;
+  background-color: #555; 
 }
 
 .movie_detail_area {
-  background: #fff;
+  background: #000; 
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   padding: 20px;
   text-align: center;
   width: 230%;
+  color: #f5c518; 
 }
+
+
 
 .movie_detail_area img {
   width: 50%;
@@ -193,6 +214,7 @@ button.detailsBtn:hover {
   font-size: 14px;
   margin: 5px 0;
   text-align: left;
+  color: #ddd; 
 }
 
 .movie_detail_area {
@@ -225,9 +247,9 @@ select {
   width: 200px;
   padding: 10px;
   font-size: 16px;
-  color: #333;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
+  color: #000; 
+  background-color: #f5c518; 
+  border: 1px solid #333;
   border-radius: 4px;
   appearance: none;
   cursor: pointer;
@@ -240,8 +262,8 @@ select:focus {
 
 select option {
   padding: 10px;
-  background-color: #fff;
-  color: #333;
+  background-color: #f5c518; 
+  color: #000;
   font-size: 16px;
 }
 
@@ -250,30 +272,38 @@ select option {
 #ratingFilter,
 #durationFilter {
   margin-bottom: 15px;
-  background-color: #f9f9f9;
+  background-color: #f5c518; 
 }
 
 .trailer-link {
   font-size: 25px;
-  color: #007bff;
+  color: #f5c518; 
   text-decoration: none;
   font-weight: 600;
-  border-bottom: 2px solid #007bff;
+  border-bottom: 2px solid #f5c518; 
   transition: color 0.3s, border-color 0.3s;
 }
 
 .trailer-link:hover {
-  color: #0056b3;
-  border-bottom-color: #0056b3;
+  color: #f39c12; 
+  border-bottom-color: #f39c12; 
 }
+
 .checked {
-  color: orange;
+  color: #f5c518; 
 }
 
-.rate{
-width: 100%;
+.rate {
+  width: 100%;
+  color: #f5c518; 
 }
 
-button#rstar{
+button.star{
   margin-top: 10px;
+  background-color: #444444;
+}
+
+button.star:hover {
+  background-color: #f5c518; 
+  color: #000; 
 }

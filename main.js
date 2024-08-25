@@ -310,6 +310,10 @@ let currentWatchlistMovies =
 
 // Code:
 
+$("#refreshText").on("click", function() {
+  location.reload();
+});
+
 const main = $(`main`);
 
 let nav = "";
@@ -329,8 +333,12 @@ const comedyBtn = $(`<button class ="comedyBtn">Comedy</button>`);
 const horrorBtn = $(`<button class ="horrorBtn">Horror</button>`);
 const dramaBtn = $(`<button class ="dramaBtn">Drama</button>`);
 const animeBtn = $(`<button class ="animeBtn">Animation</button>`);
-const favoritesBtn = $(`<button class ="favoritesBtn">Favorites</button>`);
-const watchlistBtn = $(`<button id ="watchlistBtn1">Watchlist</button>`);
+const favoritesBtn = $(
+  `<button class="favoritesBtn">Favorites  <i class="fas fa-heart" style="color: red;"></i></button>`
+);
+const watchlistBtn = $(
+  `<button id="watchlistBtn1">Watchlist  <i class="fas fa-bookmark" style="color: #f1c40f;"></i></button>`
+);
 movieListsDiv.append(
   mainPageBtn,
   actionBtn,
@@ -424,13 +432,10 @@ function showMovieDetails(movie) {
     }
 
     star.on("click", function () {
-      // Update the rating in localStorage
       localStorage.setItem(`movie-rating-${movie.id}`, i);
 
-      // Update the displayed rating immediately
       $("#movieRate").text(i);
 
-      // Update the stars visually
       rate.children(".star").find(".fa-star").removeClass("checked");
       rate.children(".star").slice(0, i).find(".fa-star").addClass("checked");
     });
@@ -443,6 +448,7 @@ function showMovieDetails(movie) {
 
   const backBtn = $("#backBtn");
   backBtn.on("click", () => {
+    mainScreenHeadingDiv.show()
     filterDiv.show();
     searchDiv.show();
     subFilterDiv.empty();

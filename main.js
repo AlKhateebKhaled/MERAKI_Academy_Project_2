@@ -15,7 +15,7 @@ const movies = [
     trailerLink: "https://www.youtube.com/watch?v=EXeTwQWrcwY",
   },
   {
-    id:2 ,
+    id: 2,
     movieName: "Inception",
     actors: ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Elliot Page"],
     imageSrc: "inception.jpg",
@@ -364,7 +364,8 @@ const filterHeadingDiv = $(`<div class="filterHeadingDiv_area"></div>`);
 subFilterDiv.append(filterHeadingDiv);
 
 const showedMoviesDiv = $(`<div class="showedMoviesDiv_area"></div>`);
-filterDiv.append(showedMoviesDiv);function showMovieDetails(movie) {
+filterDiv.append(showedMoviesDiv);
+function showMovieDetails(movie) {
   moviesDiv.empty();
   filterDiv.hide();
   searchDiv.hide();
@@ -373,7 +374,7 @@ filterDiv.append(showedMoviesDiv);function showMovieDetails(movie) {
   if (storedRating) {
     storedRating = parseInt(storedRating);
   } else {
-    storedRating = movie.rate; 
+    storedRating = movie.rate;
   }
 
   const ratingText =
@@ -393,7 +394,9 @@ filterDiv.append(showedMoviesDiv);function showMovieDetails(movie) {
       <p><strong>Categories: </strong>${movie.categories.join(", ")}</p>
       <p><strong>Director: </strong>${movie.director}</p>
       <p><strong>Box Office: </strong>${movie.boxOffice}</p>
-      <p><a href=${movie.trailerLink} target="_blank" class="trailer-link"><strong>Trailer</strong></a></p>
+      <p><a href=${
+        movie.trailerLink
+      } target="_blank" class="trailer-link"><strong>Trailer</strong></a></p>
       <button id="backBtn">Back to List</button>
       <button class="favBtn" id="favBtn">${
         favorites.includes(movie.id) ? "Remove from Favorites" : "Favorite"
@@ -407,23 +410,30 @@ filterDiv.append(showedMoviesDiv);function showMovieDetails(movie) {
   let rate = $(`<div class="rate"></div>`);
 
   for (let i = 1; i <= 10; i++) {
-    let star = $(`<button class="star"><span class="fa fa-star"></span></button>`);
+    let star = $(
+      `<button class="star"><span class="fa fa-star"></span></button>`
+    );
 
     if (i <= storedRating) {
       star.find(".fa-star").addClass("checked");
     }
 
     star.on("click", function () {
+      // Update the rating in localStorage
+      localStorage.setItem(`movie-rating-${movie.id}`, i);
+
+      // Update the displayed rating immediately
+      $("#movieRate").text(i);
+
+      // Update the stars visually
       rate.children(".star").find(".fa-star").removeClass("checked");
       rate.children(".star").slice(0, i).find(".fa-star").addClass("checked");
-      localStorage.setItem(`movie-rating-${movie.id}`, i);
-      $("#movieRate").text(i);
     });
+
     rate.append(star);
   }
 
   movieDetailDiv.append(rate);
-
   moviesDiv.append(movieDetailDiv);
 
   const backBtn = $("#backBtn");
@@ -437,13 +447,13 @@ filterDiv.append(showedMoviesDiv);function showMovieDetails(movie) {
   const favBtn = $("#favBtn");
   favBtn.on("click", () => {
     toggleFavorite(movie.id);
-    showMovieDetails(movie); 
+    showMovieDetails(movie);
   });
 
   const watchlistBtn = $("#watchlistBtn");
   watchlistBtn.on("click", () => {
     toggleWatchlist(movie.id);
-    showMovieDetails(movie); 
+    showMovieDetails(movie);
   });
 }
 
@@ -457,7 +467,7 @@ function displayMovies(movies) {
     if (storedRating) {
       storedRating = parseInt(storedRating);
     } else {
-      storedRating = movie.rate; 
+      storedRating = movie.rate;
     }
 
     const ratingText =
@@ -519,7 +529,6 @@ function displayMovies(movies) {
     });
   });
 }
-
 
 function toggleFavorite(movieId) {
   if (favorites.includes(movieId)) {
@@ -762,13 +771,20 @@ $("#filter").on("change", function () {
     releaseYearFilter.on("change", function () {
       filterHeadingDiv.empty();
       const selectedYear = $(this).val();
-      getcurrentMoviesByCategory(currentCategory);
-      currentMovies = currentMovies.filter(
-        (movie) => movie.releaseYear == selectedYear
-      );
-      displayMovies(currentMovies);
-      const releasedYearHeading = "Filtered by: Release Year";
-      filterHeadingDiv.append(releasedYearHeading);
+
+      if (selectedYear === "") {
+        getcurrentMoviesByCategory(currentCategory);
+        displayMovies(currentMovies);
+        filterHeadingDiv.empty();
+      } else {
+        getcurrentMoviesByCategory(currentCategory);
+        currentMovies = currentMovies.filter(
+          (movie) => movie.releaseYear == selectedYear
+        );
+        const releasedYearHeading = `Filtered by: Release Year ${selectedYear}`;
+        filterHeadingDiv.append(releasedYearHeading);
+        displayMovies(currentMovies);
+      }
     });
   } else if (selectedItem === `3`) {
     subFilterDiv.empty();
@@ -791,9 +807,9 @@ $("#filter").on("change", function () {
     ratingFilter.on("change", function () {
       filterHeadingDiv.empty();
       const selectedRating = $(this).val();
-    
+
       getcurrentMoviesByCategory(currentCategory);
-    
+
       currentMovies = currentMovies.filter((movie) => {
         let storedRating = localStorage.getItem(`movie-rating-${movie.id}`);
         if (storedRating) {
@@ -803,13 +819,12 @@ $("#filter").on("change", function () {
         }
         return storedRating >= selectedRating;
       });
-    
+
       displayMovies(currentMovies);
-    
+
       const ratingHeading = `Filtered by: Minimum Rating ${selectedRating}`;
       filterHeadingDiv.append(ratingHeading);
     });
-    
   } else if (selectedItem === `4`) {
     subFilterDiv.empty();
     filterHeadingDiv.empty();
@@ -833,25 +848,29 @@ $("#filter").on("change", function () {
 
     durationFilter.on("change", function () {
       filterHeadingDiv.empty();
-
       const selectedDuration = $(this).val();
+
       if (selectedDuration === "1") {
         getcurrentMoviesByCategory(currentCategory);
         currentMovies = currentMovies.filter((movie) => movie.duration <= 90);
-        const durationHeading = "Filtered by: Duration";
+        const durationHeading = "Filtered by: Duration More than 120 Minutes";
         filterHeadingDiv.append(durationHeading);
       } else if (selectedDuration === "2") {
         getcurrentMoviesByCategory(currentCategory);
         currentMovies = currentMovies.filter(
           (movie) => movie.duration > 90 && movie.duration <= 120
         );
-        const durationHeading = "Filtered by: Duration";
+        const durationHeading =
+          "Filtered by: Duration Between 90 and 120 Minutes";
         filterHeadingDiv.append(durationHeading);
       } else if (selectedDuration === "3") {
         getcurrentMoviesByCategory(currentCategory);
         currentMovies = currentMovies.filter((movie) => movie.duration > 120);
-        const durationHeading = "Filtered by: Duration";
+        const durationHeading = "Filtered by: Duration More than 120 Minutes";
         filterHeadingDiv.append(durationHeading);
+      } else {
+        getcurrentMoviesByCategory(currentCategory);
+        const durationHeading = "Filtered by: Duration";
       }
       displayMovies(currentMovies);
     });

@@ -6,7 +6,7 @@ const movies = [
     imageSrc: "images.jpeg",
     description:
       "When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham.",
-    rate: 9,
+    rate: 0,
     categories: ["Action", "Crime", "Drama"],
     releaseYear: 2008,
     duration: 152,
@@ -15,13 +15,13 @@ const movies = [
     trailerLink: "https://www.youtube.com/watch?v=EXeTwQWrcwY",
   },
   {
-    id: 2,
+    id:2 ,
     movieName: "Inception",
     actors: ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Elliot Page"],
     imageSrc: "inception.jpg",
     description:
       "A thief who enters the dreams of others to steal secrets from their subconscious is given the task of planting an idea into the mind of a CEO.",
-    rate: 9,
+    rate: 0,
     categories: ["Action", "Adventure", "Sci-Fi"],
     releaseYear: 2010,
     duration: 148,
@@ -36,7 +36,7 @@ const movies = [
     imageSrc: "Toy_Story.jpg",
     description:
       "A cowboy doll is profoundly affected by the new toy, a spaceman action figure, that becomes his rival.",
-    rate: 8,
+    rate: 0,
     categories: ["Animation", "Adventure", "Comedy"],
     releaseYear: 1995,
     duration: 81,
@@ -51,7 +51,7 @@ const movies = [
     imageSrc: "Parasite.jpg",
     description:
       "All unemployed, Ki-taek's family takes peculiar interest in the wealthy and glamorous Park family for their livelihood until they get entangled in an unexpected incident.",
-    rate: 9,
+    rate: 0,
     categories: ["Comedy", "Drama", "Thriller"],
     releaseYear: 2019,
     duration: 132,
@@ -66,7 +66,7 @@ const movies = [
     imageSrc: "The_Conjuring.jpg",
     description:
       "Paranormal investigators Ed and Lorraine Warren work to help a family terrorized by a dark presence.",
-    rate: 8,
+    rate: 0,
     categories: ["Horror", "Mystery", "Thriller"],
     releaseYear: 2013,
     duration: 112,
@@ -81,7 +81,7 @@ const movies = [
     imageSrc: "Spirited_Away.jpg",
     description:
       "During her family's move to the suburbs, a 10-year-old girl wanders into a world ruled by gods, witches, and spirits.",
-    rate: 9,
+    rate: 0,
     categories: ["Animation", "Adventure", "Fantasy"],
     releaseYear: 2001,
     duration: 125,
@@ -96,7 +96,7 @@ const movies = [
     imageSrc: "Avengers_Endgame.jpg",
     description:
       "The Avengers assemble once more in order to reverse Thanos' actions and restore order to the universe.",
-    rate: 9,
+    rate: 0,
     categories: ["Action", "Adventure", "Drama"],
     releaseYear: 2019,
     duration: 181,
@@ -111,7 +111,7 @@ const movies = [
     imageSrc: "The_Hangover.jpg",
     description:
       "Three friends wake up from a bachelor party in Las Vegas with no memory of the previous night and must retrace their steps to find their missing friend.",
-    rate: 8,
+    rate: 0,
     categories: ["Comedy"],
     releaseYear: 2009,
     duration: 100,
@@ -126,7 +126,7 @@ const movies = [
     imageSrc: "Get_Out.jpg",
     description:
       "A young African-American man visits his white girlfriend's parents for the weekend where his reception from the family turns increasingly hostile.",
-    rate: 9,
+    rate: 0,
     categories: ["Horror", "Mystery", "Thriller"],
     releaseYear: 2017,
     duration: 104,
@@ -141,7 +141,7 @@ const movies = [
     imageSrc: "The_Matrix.jpg",
     description:
       "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
-    rate: 9,
+    rate: 0,
     categories: ["Action", "Sci-Fi"],
     releaseYear: 1999,
     duration: 136,
@@ -156,7 +156,7 @@ const movies = [
     imageSrc: "Pulp_Fiction.jpg",
     description:
       "The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
-    rate: 9,
+    rate: 0,
     categories: ["Crime", "Drama"],
     releaseYear: 1994,
     duration: 154,
@@ -171,7 +171,7 @@ const movies = [
     imageSrc: "Finding_Nemo.jpg",
     description:
       "After his son is captured in the Great Barrier Reef and taken to Sydney, a timid clownfish sets out on a journey to bring him home.",
-    rate: 8,
+    rate: 0,
     categories: ["Animation", "Adventure", "Comedy"],
     releaseYear: 2003,
     duration: 100,
@@ -186,7 +186,7 @@ const movies = [
     imageSrc: "Shutter_Island.jpg",
     description:
       "A U.S. Marshal investigates the disappearance of a murderer who escaped from a mental institution.",
-    rate: 8,
+    rate: 0,
     categories: ["Mystery", "Thriller"],
     releaseYear: 2010,
     duration: 138,
@@ -201,7 +201,7 @@ const movies = [
     imageSrc: "A_Quiet_Place.jpg",
     description:
       "In a post-apocalyptic world, a family is forced to live in silence while hiding from monsters with ultra-sensitive hearing.",
-    rate: 8,
+    rate: 0,
     categories: ["Drama", "Horror", "Sci-Fi"],
     releaseYear: 2018,
     duration: 90,
@@ -216,7 +216,7 @@ const movies = [
     imageSrc: "My_Neighbor_Totoro.jpg",
     description:
       "Two young sisters move to the countryside where they encounter friendly forest spirits, including the giant Totoro.",
-    rate: 9,
+    rate: 0,
     categories: ["Animation", "Family", "Fantasy"],
     releaseYear: 1988,
     duration: 86,
@@ -231,7 +231,7 @@ const movies = [
     imageSrc: "Guardians_of_the_Galaxy.jpg",
     description:
       "A group of intergalactic criminals must pull together to stop a fanatical warrior with plans to purge the universe.",
-    rate: 8,
+    rate: 0,
     categories: ["Action", "Adventure", "Comedy"],
     releaseYear: 2014,
     duration: 121,
@@ -246,7 +246,7 @@ const movies = [
     imageSrc: "It.jpg",
     description:
       "A group of kids face their fears and band together to destroy a shape-shifting entity that emerges from the sewers every 27 years.",
-    rate: 8,
+    rate: 0,
     categories: ["Horror", "Mystery", "Thriller"],
     releaseYear: 2017,
     duration: 135,
@@ -261,7 +261,7 @@ const movies = [
     imageSrc: "Your_Name.jpg",
     description:
       "Two teenagers who swap bodies discover a connection between them as they uncover a series of mysterious events.",
-    rate: 9,
+    rate: 0,
     categories: ["Animation", "Drama", "Fantasy"],
     releaseYear: 2016,
     duration: 106,
@@ -276,7 +276,7 @@ const movies = [
     imageSrc: "Deadpool.jpg",
     description:
       "A former special forces operative turned mercenary undergoes experimental treatment to become the antihero Deadpool.",
-    rate: 8,
+    rate: 0,
     categories: ["Action", "Adventure", "Comedy"],
     releaseYear: 2016,
     duration: 108,
@@ -291,7 +291,7 @@ const movies = [
     imageSrc: "The_Shining.jpg",
     description:
       "A family heads to an isolated hotel for the winter where an evil presence influences the father into violence.",
-    rate: 9,
+    rate: null,
     categories: ["Drama", "Horror"],
     releaseYear: 1980,
     duration: 146,
@@ -364,77 +364,88 @@ const filterHeadingDiv = $(`<div class="filterHeadingDiv_area"></div>`);
 subFilterDiv.append(filterHeadingDiv);
 
 const showedMoviesDiv = $(`<div class="showedMoviesDiv_area"></div>`);
-filterDiv.append(showedMoviesDiv);
-
-function showMovieDetails(movie) {
+filterDiv.append(showedMoviesDiv);function showMovieDetails(movie) {
   moviesDiv.empty();
   filterDiv.hide();
   searchDiv.hide();
+
+  let storedRating = localStorage.getItem(`movie-rating-${movie.id}`);
+  if (storedRating) {
+    storedRating = parseInt(storedRating);
+  } else {
+    storedRating = movie.rate; 
+  }
+
+  const ratingText =
+    storedRating > 0
+      ? `<p><strong>Rate: </strong><span id="movieRate">${storedRating}</span></p>`
+      : `<p><strong>Rate: </strong>No rating yet. Be the first one to rate!</p>`;
+
   const movieDetailDiv = $(`
-      <div class="movie_detail_area">
-        <img src=${movie.imageSrc} width="200" height="200">        
-        <h2>${movie.movieName}</h2>
-        <p><strong>Actors: </strong>${movie.actors.join(", ")}</p>
-        <p><strong>Description: </strong>${movie.description}</p>
-        <p><strong>releaseYear: </strong>${movie.releaseYear}</p>
-        <p><strong>Duration: </strong>${movie.duration} min.</p>
-        <p><strong>Rate: </strong>${movie.rate}</p>
-        <p><strong>Categories: </strong>${movie.categories.join(", ")}</p>
-        <p><strong>Director: </strong>${movie.director}</p>
-        <p><strong>BoxOffice: </strong>${movie.boxOffice}</p>
-        <p><a href=${
-          movie.trailerLink
-        } target="_blank" class="trailer-link"><strong>Trailer</strong></a></p>
-        <button id="backBtn">Back to List</button>
-        <button class="favBtn" id ="favBtn">${
-          favorites.includes(movie.id) ? "Remove from Favorites" : "Favorite"
-        }</button>
-        <button class="watchlistBtn" id="watchlistBtn">${
-          watchlist.includes(movie.id) ? "Remove from Watchlist" : "Watchlist"
-        }</button>
-      </div>
-    `);
+    <div class="movie_detail_area">
+      <img src=${movie.imageSrc} width="200" height="200">        
+      <h2>${movie.movieName}</h2>
+      <p><strong>Actors: </strong>${movie.actors.join(", ")}</p>
+      <p><strong>Description: </strong>${movie.description}</p>
+      <p><strong>Release Year: </strong>${movie.releaseYear}</p>
+      <p><strong>Duration: </strong>${movie.duration} min.</p>
+      ${ratingText}
+      <p><strong>Categories: </strong>${movie.categories.join(", ")}</p>
+      <p><strong>Director: </strong>${movie.director}</p>
+      <p><strong>Box Office: </strong>${movie.boxOffice}</p>
+      <p><a href=${movie.trailerLink} target="_blank" class="trailer-link"><strong>Trailer</strong></a></p>
+      <button id="backBtn">Back to List</button>
+      <button class="favBtn" id="favBtn">${
+        favorites.includes(movie.id) ? "Remove from Favorites" : "Favorite"
+      }</button>
+      <button class="watchlistBtn" id="watchlistBtn">${
+        watchlist.includes(movie.id) ? "Remove from Watchlist" : "Watchlist"
+      }</button>
+    </div>
+  `);
+
   let rate = $(`<div class="rate"></div>`);
 
-  for (let i = 1; i <= 5; i++) {
-    let star = $(
-      `<button class="star" id="star"><span class="fa fa-star"></span></button>`
-    );
+  for (let i = 1; i <= 10; i++) {
+    let star = $(`<button class="star"><span class="fa fa-star"></span></button>`);
+
+    if (i <= storedRating) {
+      star.find(".fa-star").addClass("checked");
+    }
 
     star.on("click", function () {
       rate.children(".star").find(".fa-star").removeClass("checked");
       rate.children(".star").slice(0, i).find(".fa-star").addClass("checked");
+      localStorage.setItem(`movie-rating-${movie.id}`, i);
+      $("#movieRate").text(i);
     });
     rate.append(star);
   }
 
   movieDetailDiv.append(rate);
+
   moviesDiv.append(movieDetailDiv);
 
   const backBtn = $("#backBtn");
   backBtn.on("click", () => {
     filterDiv.show();
     searchDiv.show();
+    subFilterDiv.empty();
     displayMovies(currentMovies);
   });
 
-  const favBtn = $(".favBtn");
+  const favBtn = $("#favBtn");
   favBtn.on("click", () => {
     toggleFavorite(movie.id);
-    favBtn.text(
-      favorites.includes(movie.id) ? "Remove from Favorites" : "Favorite"
-    );
+    showMovieDetails(movie); 
   });
 
-  const watchlistBtn = $(".watchlistBtn");
+  const watchlistBtn = $("#watchlistBtn");
   watchlistBtn.on("click", () => {
     toggleWatchlist(movie.id);
-    watchlistBtn.text(
-      watchlist.includes(movie.id) ? "Remove from Watchlist" : "Watchlist"
-    );
+    showMovieDetails(movie); 
   });
 }
-
 
 function displayMovies(movies) {
   moviesDiv.empty();
@@ -442,13 +453,25 @@ function displayMovies(movies) {
   const numberOfShowedMovies = "Showed Movies : " + currentMovies.length;
   showedMoviesDiv.append(numberOfShowedMovies);
   movies.forEach((movie) => {
+    let storedRating = localStorage.getItem(`movie-rating-${movie.id}`);
+    if (storedRating) {
+      storedRating = parseInt(storedRating);
+    } else {
+      storedRating = movie.rate; 
+    }
+
+    const ratingText =
+      storedRating > 0
+        ? `<p><strong>Rate: </strong>${storedRating}</p>`
+        : `<p><strong>Rate: </strong>No rating yet. Be the first one to rate!</p>`;
+
     const movieDiv = $(`
         <div class="movie_area">
         <div class="movieinfo_area">
           <img src=${movie.imageSrc} width="200" height="200">        
           <h2>${movie.movieName}</h2>
           <p><strong>releaseYear: </strong>${movie.releaseYear}</p>
-          <p><strong>Rate: </strong>${movie.rate}</p>
+          ${ratingText}
           <p><strong>Categories: </strong>${movie.categories.join(", ")}</p>
           </div>
         <div class="movieBtns_area">
@@ -496,6 +519,7 @@ function displayMovies(movies) {
     });
   });
 }
+
 
 function toggleFavorite(movieId) {
   if (favorites.includes(movieId)) {
@@ -739,7 +763,7 @@ $("#filter").on("change", function () {
       filterHeadingDiv.empty();
       const selectedYear = $(this).val();
       getcurrentMoviesByCategory(currentCategory);
-      currentMovies = currentCategory.filter(
+      currentMovies = currentMovies.filter(
         (movie) => movie.releaseYear == selectedYear
       );
       displayMovies(currentMovies);
@@ -760,21 +784,32 @@ $("#filter").on("change", function () {
     ratingFilter.append(defaultRatingOption);
 
     for (let i = 1; i < 11; i++) {
-      const raringoption = $("<option></option>").val(i).text(i);
-      ratingFilter.append(raringoption);
+      const ratingoption = $("<option></option>").val(i).text(i);
+      ratingFilter.append(ratingoption);
     }
 
     ratingFilter.on("change", function () {
       filterHeadingDiv.empty();
       const selectedRating = $(this).val();
+    
       getcurrentMoviesByCategory(currentCategory);
-      currentMovies = currentMovies.filter(
-        (movie) => movie.rate >= selectedRating
-      );
+    
+      currentMovies = currentMovies.filter((movie) => {
+        let storedRating = localStorage.getItem(`movie-rating-${movie.id}`);
+        if (storedRating) {
+          storedRating = parseInt(storedRating);
+        } else {
+          storedRating = movie.rate;
+        }
+        return storedRating >= selectedRating;
+      });
+    
       displayMovies(currentMovies);
-      const ratingHeading = "Filtered by: Minimum Rating";
+    
+      const ratingHeading = `Filtered by: Minimum Rating ${selectedRating}`;
       filterHeadingDiv.append(ratingHeading);
     });
+    
   } else if (selectedItem === `4`) {
     subFilterDiv.empty();
     filterHeadingDiv.empty();

@@ -38,6 +38,20 @@ main {
   display: grid;
 }
 
+.mainScreenHeadingDiv{
+  font-size: 25px;
+  font-weight: bolder;
+  text-align: center;
+  margin-bottom: 20px;
+  background-color: #111;
+  color: #f1c40f;
+  padding: 10px 20px;
+  position: sticky;
+  top: 10px;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
 .searchDiv_area {
   margin-bottom: 20px;
 }

@@ -345,6 +345,9 @@ myListsDiv.append(favoritesBtn, watchlistBtn);
 const mainScreenDiv = $(`<div class="mainScreenDiv"></div>`);
 main.append(mainScreenDiv);
 
+const mainScreenHeadingDiv = $(`<div class="mainScreenHeadingDiv"></div>`);
+mainScreenDiv.append(mainScreenHeadingDiv);
+
 const moviesheaderDiv = $(`<div class="moviesheaderDiv"></div>`);
 mainScreenDiv.append(moviesheaderDiv);
 
@@ -362,6 +365,8 @@ filterDiv.append(subFilterDiv);
 
 const filterHeadingDiv = $(`<div class="filterHeadingDiv_area"></div>`);
 subFilterDiv.append(filterHeadingDiv);
+
+mainScreenHeadingDiv.hide()
 
 const showedMoviesDiv = $(`<div class="showedMoviesDiv_area"></div>`);
 filterDiv.append(showedMoviesDiv);
@@ -500,6 +505,7 @@ function displayMovies(movies) {
 
     const detailsBtn = movieDiv.find(".detailsBtn");
     detailsBtn.on("click", () => {
+      mainScreenHeadingDiv.hide()
       nav = "other";
       showMovieDetails(movie);
     });
@@ -657,6 +663,10 @@ function getcurrentMoviesByCategory(category) {
 }
 
 mainPageBtn.on("click", () => {
+  mainScreenHeadingDiv.show()
+  mainScreenHeadingDiv.empty();
+  mainScreenHeadingDiv.append($(`<h>Main Page</h>`));
+
   $("#filter").val("");
   nav = "other";
   filterDiv.show();
@@ -665,6 +675,10 @@ mainPageBtn.on("click", () => {
   filterMoviesByCategory("Main Page");
 });
 actionBtn.on("click", () => {
+  mainScreenHeadingDiv.show()
+
+  mainScreenHeadingDiv.empty();
+  mainScreenHeadingDiv.append($(`<h>Action</h>`));
   $("#filter").val("");
   nav = "other";
   filterDiv.show();
@@ -673,6 +687,9 @@ actionBtn.on("click", () => {
   filterMoviesByCategory("Action");
 });
 comedyBtn.on("click", () => {
+  mainScreenHeadingDiv.show()
+  mainScreenHeadingDiv.empty();
+  mainScreenHeadingDiv.append($(`<h>Comedy</h>`));
   $("#filter").val("");
   nav = "other";
   filterDiv.show();
@@ -681,6 +698,9 @@ comedyBtn.on("click", () => {
   filterMoviesByCategory("Comedy");
 });
 horrorBtn.on("click", () => {
+  mainScreenHeadingDiv.show()
+  mainScreenHeadingDiv.empty();
+  mainScreenHeadingDiv.append($(`<h>Horror</h>`));
   $("#filter").val("");
   nav = "other";
   filterDiv.show();
@@ -689,6 +709,9 @@ horrorBtn.on("click", () => {
   filterMoviesByCategory("Horror");
 });
 dramaBtn.on("click", () => {
+  mainScreenHeadingDiv.show()
+  mainScreenHeadingDiv.empty();
+  mainScreenHeadingDiv.append($(`<h>Drama</h>`));
   $("#filter").val("");
   nav = "other";
   filterDiv.show();
@@ -697,6 +720,9 @@ dramaBtn.on("click", () => {
   filterMoviesByCategory("Drama");
 });
 animeBtn.on("click", () => {
+  mainScreenHeadingDiv.show()
+  mainScreenHeadingDiv.empty();
+  mainScreenHeadingDiv.append($(`<h>Animation</h>`));
   $("#filter").val("");
   nav = "other";
   filterDiv.show();
@@ -705,6 +731,9 @@ animeBtn.on("click", () => {
   filterMoviesByCategory("Animation");
 });
 favoritesBtn.on("click", () => {
+  mainScreenHeadingDiv.show()
+  mainScreenHeadingDiv.empty();
+  mainScreenHeadingDiv.append($(`<h>Favorites</h>`));
   $("#filter").val("");
   nav = "favorites";
   filterDiv.show();
@@ -713,6 +742,9 @@ favoritesBtn.on("click", () => {
   filterMoviesByCategory("Favorites");
 });
 watchlistBtn.on("click", () => {
+  mainScreenHeadingDiv.show()
+  mainScreenHeadingDiv.empty();
+  mainScreenHeadingDiv.append($(`<h>Watchlist</h>`));
   $("#filter").val("");
   nav = "watchlist";
   filterDiv.show();

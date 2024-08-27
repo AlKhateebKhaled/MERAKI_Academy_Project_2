@@ -307,108 +307,144 @@ let currentFavoritesMovies =
   JSON.parse(localStorage.getItem("currentFavoritesMovies")) || [];
 let currentWatchlistMovies =
   JSON.parse(localStorage.getItem("currentWatchlistMovies")) || [];
-const body = $(`body`);
-const header = $(`<header class ="header" ></header>`);
-const main = $(`<main " class = "main"></main>`);
 
-
-const welcomePage = $('<div>', { class: 'welcome_page' });
-const logo = $('<div>', { class: 'logo' }).text('KMDB'); 
-const heading = $('<h1>').text('Welcome to KMDB');
-const description = $('<p>').text('Your ultimate movie database. Please login or register to continue.');
-const userNameInput = $('<input>', { type: 'text', id: 'userNameInput', placeholder: 'Username' });
-const passInput = $('<input>', { type: 'password', id: 'passInput', placeholder: 'Password' });
-const loginBtn = $('<button>', { id: 'loginBtn' }).text('Login');
-const registerBtn = $('<button>', { id: 'registerBtn' }).text('Register');
-const guestsBtn = $('<button>', { id: 'guestsBtn' }).text('Guest');
-
-const facebookLink = $('<a>', { href: 'https://www.facebook.com/kmdb', target: '_blank' }).html('<img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">');
-const instagramLink = $('<a>', { href: 'https://www.instagram.com/kmdb', target: '_blank' }).html('<img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">');
-
-const socialMediaContainer = $('<div>', { class: 'social-media-links' }).append(facebookLink, instagramLink);
-
-const followUs = $('<p>').text('Follow us on social media:');
-
-const credits = $('<div>', { class: 'credits' });
-const creditText = $('<p>').html('Created by Khaled Al-Khateeb');
-const thanksText = $('<p>').html('Special thanks to <a href="https://www.meraki-academy.org/" target="_blank">Meraki Academy</a>');
-
-welcomePage.append(
-  logo,
-  heading,
-  description,
-  userNameInput,
-  passInput,
-  loginBtn,
-  registerBtn,
-  guestsBtn,
-  followUs,
-  socialMediaContainer,
-  credits.append(creditText, thanksText)
-);
-
-body.append(welcomePage);
-
-
-const users = [];
-
-function login() {
-  const username = $("#userNameInput").val();
-  const password = $("#passInput").val();
-  const user = users.find(
-    (u) => u.username === username && u.password === password
+  const body = $(`body`);
+  const header = $(`<header class ="header" ></header>`);
+  const main = $(`<main " class = "main"></main>`);
+  
+  body.append(header, main);
+  
+  header.hide();
+  main.hide();
+  
+  const welcomePage = $(`<div class ="welcome_page"></div>`);
+  const logo = $(`<div class ="logo">KMDB</div>`);
+  const heading = $(`<h1>Welcome to KMDB</h1>`);
+  const description = $(
+    `<p>Your ultimate movie database. Please login or register to continue.</p>`
   );
-
-  if (user) {
-    $(".welcome_page").hide();
-    $('body').append(header);
-    $('body').append(main);
-  } else {
-    alert("Invalid username or password");
+  const userNameInput = $(
+    `<input type="text" id="userNameInput" placeholder="Username">`
+  );
+  const passInput = $(
+    `<input type="password" id="passInput" placeholder="Password">`
+  );
+  
+  const loginBtn = $(`<button id="loginBtn">Login</button>`);
+  const registerBtn = $(`<button id="RegisterBtn">Register</button>`);
+  const guestsBtn = $(`<button id="guestsBtn">Guest</button>`);
+  
+  const followUs = $(`<p>Follow us on social media:</p>`);
+  
+  const facebookLink = $(
+    `<a href="https://www.facebook.com/kmdb" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+    </a>`
+  );
+  
+  const instagramLink = $(
+    `<a href="https://www.instagram.com/kmdb" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+    </a>`
+  );
+  
+  const socialMediaContainer = $(`<div class="social-media-links"></div>`).append(
+    facebookLink,
+    instagramLink
+  );
+  
+  const credits = $(`<div class="credits"></div>`);
+  const creditText = $(`<p>Created by Khaled Al-Khateeb</p>`);
+  const thanksText = $(
+    `<p>Special thanks to <a href="https://www.meraki-academy.org/" target="_blank">Meraki Academy</a></p>`
+  );
+  
+  credits.append(creditText, thanksText);
+  
+  welcomePage.append(
+    logo,
+    heading,
+    description,
+    userNameInput,
+    passInput,
+    loginBtn,
+    registerBtn,
+    guestsBtn,
+    followUs,
+    socialMediaContainer,
+    credits
+  );
+  
+  body.append(welcomePage);
+  
+  function loadUsers() {
+    return JSON.parse(localStorage.getItem("users")) || [];
   }
-}
-
-function register() {
-  const username = $("#userNameInput").val();
-  const password = $("#passInput").val();
-
-  if (users.some((u) => u.username === username)) {
-    alert("Username already exists");
-  } else {
-    users.push({ username, password });
-    alert("Registration successful");
-    $(".welcome_page").hide();
-    body.append(header);
-    body.append(main);
+  
+  function saveUsers(users) {
+    localStorage.setItem("users", JSON.stringify(users));
   }
-}
-
-function guest() {
-  alert("Logged in as guest");
-  $(".welcome_page").hide();
-  body.append(header);
-  body.append(main);
-}
-
-$(document).on("click", "#loginBtn", login);
-$(document).on("click", "#registerBtn", register);
-$(document).on("click", "#guestsBtn", guest);
-
-
+  
+  function login() {
+    const username = $("#userNameInput").val();
+    const password = $("#passInput").val();
+    const users = loadUsers();
+    const user = users.find(
+      (u) => u.username === username && u.password === password
+    );
+  
+    if (user) {
+      $(".welcome_page").hide();
+      header.show();
+      main.show();
+    } else {
+      alert("Invalid username or password");
+    }
+  }
+  
+  function register() {
+    const username = $("#userNameInput").val();
+    const password = $("#passInput").val();
+    let users = loadUsers();
+  
+    if (users.some((u) => u.username === username)) {
+      alert("Username already exists");
+    } else {
+      users.push({ username, password });
+      saveUsers(users);
+      alert("Registration successful");
+      $(".welcome_page").hide();
+      header.show();
+      main.show();
+    }
+  }
+  
+  function guest() {
+    $(".welcome_page").hide();
+    header.show();
+    main.show();
+  }
+  
+  $(loginBtn).on("click", login);
+  $(registerBtn).on("click", register);
+  $(guestsBtn).on("click", guest);
+  
 const title = $(
   `<h id="refreshText" style="cursor: pointer"><strong>KMDb</strong></h>`
 );
 header.append(title);
 
-$("#refreshText").on("click", function () {
+const themeToggle = $(`<button id="themeToggle">Light Mode</button>`);
+
+header.append(themeToggle);
+
+title.on("click", function () {
   location.reload();
 });
 
-header.append('<button id="themeToggle">Light Mode</button>');
-
 body.addClass("dark-mode");
 
-$("#themeToggle").on("click", function () {
+themeToggle.on("click", function () {
   if (body.hasClass("dark-mode")) {
     body.removeClass("dark-mode").addClass("light-mode");
     $(this).text("Dark Mode");
@@ -428,6 +464,9 @@ categoryDiv.append(movieListsDiv);
 
 const myListsDiv = $(`<div class="myListsDiv"></div>`);
 categoryDiv.append(myListsDiv);
+
+const userinfoDiv = $(`<div class="userinfoDiv"></div>`);
+categoryDiv.append(userinfoDiv);
 
 const mainPageBtn = $(`<button class ="mainPageBtn">Main Page</button>`);
 const actionBtn = $(`<button class ="actionBtn">Action</button>`);
@@ -451,6 +490,16 @@ movieListsDiv.append(
 );
 
 myListsDiv.append(favoritesBtn, watchlistBtn);
+
+const logoutBtn = $(`<button class ="logoutBtn">Logout</button>`);
+
+logoutBtn.on("click", () => {
+  $(".welcome_page").show();
+  header.hide();
+  main.hide();
+});
+
+userinfoDiv.append(logoutBtn);
 
 const mainScreenDiv = $(`<div class="mainScreenDiv"></div>`);
 main.append(mainScreenDiv);

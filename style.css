@@ -13,9 +13,8 @@ body {
 
 .light-mode {
   background-color: #ffffff;
-  color: #000000;
+  color: #1a1a1a;
 }
-
 
 header {
   background-color: #000; 
@@ -27,6 +26,11 @@ header {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
   font-size: 40px;
   margin: 0;
+}
+.light-mode header {
+  background-color: #f5f5f5;
+  color: #1a1a1a;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 main {
@@ -64,6 +68,12 @@ main {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
 }
 
+.light-mode .mainScreenHeadingDiv {
+  background-color: #f5f5f5;
+  color: #1a1a1a;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 .searchDiv_area {
   margin-bottom: 20px;
 }
@@ -89,6 +99,15 @@ main {
   background-color: #333; 
 }
 
+.light-mode #searchInput {
+  border: 1px solid #ccc;
+}
+
+.light-mode #searchBtn {
+  background-color: #f5f5f5;
+  color: #1a1a1a;
+}
+
 .moviesDiv {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -104,6 +123,12 @@ main {
   width: 300px;
   text-align: center;
   color: #f5c518; 
+}
+
+.light-mode .movie_area {
+  background: #f5f5f5;
+  color: #1a1a1a;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .movie_area img {
@@ -129,6 +154,8 @@ main {
   height: 310px;
 }
 
+
+
 button {
   padding: 8px 12px;
   border: none;
@@ -137,6 +164,12 @@ button {
   margin-top: 5px;
   margin-bottom: 5px;
   font-size: 20px;
+}
+
+
+.light-mode button {
+  background-color: #f5f5f5;
+  color: #1a1a1a;
 }
 
 button.mainPageBtn,
@@ -208,6 +241,11 @@ button.detailsBtn:hover {
 }
 
 
+.light-mode .movie_detail_area {
+  background: #f5f5f5;
+  color: #1a1a1a;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
 .movie_detail_area img {
   width: 50%;
@@ -278,6 +316,14 @@ select option {
   font-size: 16px;
 }
 
+
+.light-mode select {
+  background-color: #ffffff;
+  color: #1a1a1a;
+  border: 1px solid #ccc;
+}
+
+
 #filter,
 #releaseYearFilter,
 #ratingFilter,
@@ -300,6 +346,12 @@ select option {
   border-bottom-color: #f39c12; 
 }
 
+
+.light-mode .trailer-link {
+  color: #3498db;
+  border-bottom-color: #3498db;
+}
+
 .checked {
   color: #f5c518; 
 }
@@ -317,4 +369,9 @@ button.star{
 button.star:hover {
   background-color: #f5c518; 
   color: #000; 
+}
+
+.light-mode .checked,
+.light-mode .rate {
+  color: #ffa500;
 }

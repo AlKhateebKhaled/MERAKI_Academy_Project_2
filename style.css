@@ -6,6 +6,17 @@ body {
   color: #f5c518; 
 }
 
+.welcome_page{
+  display: grid;
+  width: 300px;
+}
+
+#loginBtn,
+#registerBtn,
+#guestsBtn{
+  width: 200px
+}
+
 #themeToggle{
   padding: 8px 12px;
   font-size: 16px;
@@ -34,7 +45,7 @@ body {
   color: #1a1a1a;
 }
 
-header {
+.header {
   display: flex ;
   gap: space-between;
   background-color: #000; 
@@ -47,13 +58,13 @@ header {
   font-size: 40px;
   margin: 0;
 }
-.light-mode header {
+.light-mode .header {
   background-color: #f5f5f5;
   color: #1a1a1a;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-main {
+.main {
   display: grid;
   grid-template-columns: 1fr 6fr;
   padding: 20px;

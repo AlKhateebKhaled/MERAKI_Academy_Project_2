@@ -307,30 +307,86 @@ let currentFavoritesMovies =
   JSON.parse(localStorage.getItem("currentFavoritesMovies")) || [];
 let currentWatchlistMovies =
   JSON.parse(localStorage.getItem("currentWatchlistMovies")) || [];
+const body = $(`body`);
+const header = $(`<header class ="header" ></header>`);
+const main = $(`<main " class = "main"></main>`);
 
+const welcomePage = $(`
+        <div class="welcome_page">
+            <input type="text" id="userNameInput" placeholder="Username">
+            <input type="password" id="passInput" placeholder="Password">
+            <button id="loginBtn">Login</button>
+            <button id="registerBtn">Register</button>
+            <button id="guestsBtn">Guest</button>
+        </div>
+    `);
+body.append(welcomePage);
+const users = [];
 
-const main = $(`main`);
-const title =$(`<h  id="refreshText" style="cursor: pointer"><strong>KMDb</strong></h>`) 
-$("header").append(title);
+function login() {
+  const username = $("#userNameInput").val();
+  const password = $("#passInput").val();
+  const user = users.find(
+    (u) => u.username === username && u.password === password
+  );
+
+  if (user) {
+    $(".welcome_page").hide();
+    body.append(header);
+    body.append(main);
+  } else {
+    alert("Invalid username or password");
+  }
+}
+
+function register() {
+  const username = $("#userNameInput").val();
+  const password = $("#passInput").val();
+
+  if (users.some((u) => u.username === username)) {
+    alert("Username already exists");
+  } else {
+    users.push({ username, password });
+    alert("Registration successful");
+    $(".welcome_page").hide();
+    body.append(header);
+    body.append(main);
+  }
+}
+
+function guest() {
+  alert("Logged in as guest");
+  $(".welcome_page").hide();
+  body.append(header);
+  body.append(main);
+}
+
+$("#loginBtn").on("click", login);
+$("#registerBtn").on("click", register);
+$("#guestsBtn").on("click", guest);
+
+const title = $(
+  `<h  id="refreshText" style="cursor: pointer"><strong>KMDb</strong></h>`
+);
+header.append(title);
 
 $("#refreshText").on("click", function () {
   location.reload();
 });
 
-  $("header").append('<button id="themeToggle">Light Mode</button>');
+header.append('<button id="themeToggle">Light Mode</button>');
 
-  $("body").addClass("dark-mode");
+body.addClass("dark-mode");
 
-  $("#themeToggle").on("click", function () {
-    if ($("body").hasClass("dark-mode")) {
-      $("body").removeClass("dark-mode").addClass("light-mode");
-      $(this).text("Dark Mode");
-    } else {
-      $("body").removeClass("light-mode").addClass("dark-mode");
-      $(this).text("Light Mode");
-    }
-  });
-
+$("#themeToggle").on("click", function () {
+  if (body.hasClass("dark-mode")) {
+    body.removeClass("dark-mode").addClass("light-mode");
+    $(this).text("Dark Mode");
+  } else {
+    body.removeClass("light-mode").addClass("dark-mode");
+    $(this).text("Light Mode");
+  }
+});
 
 let nav = "";
 

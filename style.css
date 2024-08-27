@@ -1,5 +1,139 @@
 body {
   margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #1a1a1a; 
+  color: #f5c518; 
+}
+
+.welcome_page {
+  background: #2c2c2c; 
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  padding: 40px;
+  width: 400px;
+  text-align: center;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  background-color: #000;
+  color: #f5c518;
+  font-size: 36px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.welcome_page h1 {
+  margin-bottom: 15px;
+  color: #f5c518;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.welcome_page p {
+  margin-bottom: 25px;
+  color: #ddd;
+  font-size: 18px;
+}
+
+.welcome_page input[type="text"],
+.welcome_page input[type="password"] {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #333; 
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #1a1a1a; 
+  color: #f5c518;
+}
+
+.welcome_page button {
+  font-size: 20px;
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: #000; 
+  color: #f5c518;   
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.welcome_page button:hover {
+  background-color: #f1c40f; 
+  transform: scale(1.02);
+}
+
+.welcome_page button:active {
+  background-color: #e0b700; 
+  transform: scale(0.98);
+}
+
+.welcome_page a {
+  display: block;
+  color: #f5c518; 
+  text-decoration: none;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.welcome_page a:hover {
+  text-decoration: underline;
+}
+
+.social-media-links {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.social-media-links a {
+  display: inline-block;
+}
+
+.social-media-links img {
+  width: 30px;
+  height: 30px;
+}
+
+.credits {
+  margin-top: 30px;
+}
+
+.credits p {
+  margin: 0;
+  color: #ddd;
+  font-size: 14px;
+}
+
+.credits a {
+  color: #f5c518;
+  text-decoration: none;
+}
+
+.credits a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 500px) {
+  .welcome_page {
+    width: 90%;
+  }
+}
+
+
+
+
+
+body {
+  margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
   background-color: #1a1a1a; 

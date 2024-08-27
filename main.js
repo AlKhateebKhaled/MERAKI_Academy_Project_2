@@ -311,16 +311,45 @@ const body = $(`body`);
 const header = $(`<header class ="header" ></header>`);
 const main = $(`<main " class = "main"></main>`);
 
-const welcomePage = $(`
-        <div class="welcome_page">
-            <input type="text" id="userNameInput" placeholder="Username">
-            <input type="password" id="passInput" placeholder="Password">
-            <button id="loginBtn">Login</button>
-            <button id="registerBtn">Register</button>
-            <button id="guestsBtn">Guest</button>
-        </div>
-    `);
+
+const welcomePage = $('<div>', { class: 'welcome_page' });
+const logo = $('<div>', { class: 'logo' }).text('KMDB'); 
+const heading = $('<h1>').text('Welcome to KMDB');
+const description = $('<p>').text('Your ultimate movie database. Please login or register to continue.');
+const userNameInput = $('<input>', { type: 'text', id: 'userNameInput', placeholder: 'Username' });
+const passInput = $('<input>', { type: 'password', id: 'passInput', placeholder: 'Password' });
+const loginBtn = $('<button>', { id: 'loginBtn' }).text('Login');
+const registerBtn = $('<button>', { id: 'registerBtn' }).text('Register');
+const guestsBtn = $('<button>', { id: 'guestsBtn' }).text('Guest');
+
+const facebookLink = $('<a>', { href: 'https://www.facebook.com/kmdb', target: '_blank' }).html('<img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">');
+const instagramLink = $('<a>', { href: 'https://www.instagram.com/kmdb', target: '_blank' }).html('<img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">');
+
+const socialMediaContainer = $('<div>', { class: 'social-media-links' }).append(facebookLink, instagramLink);
+
+const followUs = $('<p>').text('Follow us on social media:');
+
+const credits = $('<div>', { class: 'credits' });
+const creditText = $('<p>').html('Created by Khaled Al-Khateeb');
+const thanksText = $('<p>').html('Special thanks to <a href="https://www.meraki-academy.org/" target="_blank">Meraki Academy</a>');
+
+welcomePage.append(
+  logo,
+  heading,
+  description,
+  userNameInput,
+  passInput,
+  loginBtn,
+  registerBtn,
+  guestsBtn,
+  followUs,
+  socialMediaContainer,
+  credits.append(creditText, thanksText)
+);
+
 body.append(welcomePage);
+
+
 const users = [];
 
 function login() {
@@ -332,8 +361,8 @@ function login() {
 
   if (user) {
     $(".welcome_page").hide();
-    body.append(header);
-    body.append(main);
+    $('body').append(header);
+    $('body').append(main);
   } else {
     alert("Invalid username or password");
   }
@@ -361,12 +390,13 @@ function guest() {
   body.append(main);
 }
 
-$("#loginBtn").on("click", login);
-$("#registerBtn").on("click", register);
-$("#guestsBtn").on("click", guest);
+$(document).on("click", "#loginBtn", login);
+$(document).on("click", "#registerBtn", register);
+$(document).on("click", "#guestsBtn", guest);
+
 
 const title = $(
-  `<h  id="refreshText" style="cursor: pointer"><strong>KMDb</strong></h>`
+  `<h id="refreshText" style="cursor: pointer"><strong>KMDb</strong></h>`
 );
 header.append(title);
 

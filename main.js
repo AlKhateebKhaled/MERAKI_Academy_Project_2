@@ -308,12 +308,16 @@ let currentFavoritesMovies =
 let currentWatchlistMovies =
   JSON.parse(localStorage.getItem("currentWatchlistMovies")) || [];
 
+
+const main = $(`main`);
+const title =$(`<h  id="refreshText" style="cursor: pointer"><strong>KMDb</strong></h>`) 
+$("header").append(title);
+
 $("#refreshText").on("click", function () {
   location.reload();
 });
 
-$(document).ready(function () {
-  $("body").prepend('<button id="themeToggle">Light Mode</button>');
+  $("header").append('<button id="themeToggle">Light Mode</button>');
 
   $("body").addClass("dark-mode");
 
@@ -326,9 +330,7 @@ $(document).ready(function () {
       $(this).text("Light Mode");
     }
   });
-});
 
-const main = $(`main`);
 
 let nav = "";
 

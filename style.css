@@ -6,6 +6,24 @@ body {
   color: #f5c518; 
 }
 
+#themeToggle{
+  padding: 8px 12px;
+  font-size: 16px;
+  border: none;
+  background-color: #f5f5f5;
+  color: #1a1a1a;
+  border-radius: 4px;
+  cursor: pointer;
+  position: fixed;
+  top: 10px;
+  right: 20px;}
+
+
+.light-mode #themeToggle {
+  background-color: #000; 
+  color: #f5c518; 
+}
+
 .dark-mode {
   background-color: #121212;
   color: #ffffff;
@@ -17,6 +35,8 @@ body {
 }
 
 header {
+  display: flex ;
+  gap: space-between;
   background-color: #000; 
   color: #f5c518; 
   padding: 10px 20px;
@@ -38,6 +58,10 @@ main {
   grid-template-columns: 1fr 6fr;
   padding: 20px;
   gap: 10px;
+}
+
+.category_area
+{
 }
 
 .myListsDiv {
@@ -99,14 +123,15 @@ main {
   background-color: #333; 
 }
 
-.light-mode #searchInput {
-  border: 1px solid #ccc;
-}
-
 .light-mode #searchBtn {
+  border: 1px solid #ccc;
   background-color: #f5f5f5;
   color: #1a1a1a;
 }
+.light-mode #searchBtn:hover {
+  background-color: #9e9c9c; 
+}
+
 
 .moviesDiv {
   display: grid;
@@ -149,6 +174,10 @@ main {
   color: #ddd; 
 }
 
+.light-mode .movie_area p{
+  color: #000;
+}
+
 .movieinfo_area {
   padding: 5px;
   height: 310px;
@@ -185,6 +214,20 @@ button#watchlistBtn1
   background-color: #000; 
   color: #f5c518; 
 }
+
+.light-mode button.mainPageBtn,
+.light-mode button.actionBtn,
+.light-mode button.comedyBtn,
+.light-mode button.horrorBtn,
+.light-mode button.dramaBtn,
+.light-mode button.animeBtn,
+.light-mode button.favoritesBtn,
+.light-mode button#watchlistBtn1
+{
+  background-color: #f5f5f5;
+  color: #1a1a1a;
+}
+
 
 button:hover {
   background-color: #f5c518; 
@@ -264,6 +307,10 @@ button.detailsBtn:hover {
   margin: 5px 0;
   text-align: left;
   color: #ddd; 
+}
+
+.light-mode .movie_detail_area p{
+  color: #000;
 }
 
 .movie_detail_area {

@@ -301,134 +301,197 @@ const movies = [
   },
 ];
 
-let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-let watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
-let currentFavoritesMovies =
-  JSON.parse(localStorage.getItem("currentFavoritesMovies")) || [];
-let currentWatchlistMovies =
-  JSON.parse(localStorage.getItem("currentWatchlistMovies")) || [];
+let currentUser = null;
+let favorites = [];
+let watchlist = [];
+let currentFavoritesMovies = [];
+let currentWatchlistMovies = [];
 
-  const body = $(`body`);
-  const header = $(`<header class ="header" ></header>`);
-  const main = $(`<main " class = "main"></main>`);
-  
-  body.append(header, main);
-  
-  header.hide();
-  main.hide();
-  
-  const welcomePage = $(`<div class ="welcome_page"></div>`);
-  const logo = $(`<div class ="logo">KMDB</div>`);
-  const heading = $(`<h1>Welcome to KMDB</h1>`);
-  const description = $(
-    `<p>Your ultimate movie database. Please login or register to continue.</p>`
-  );
-  const userNameInput = $(
-    `<input type="text" id="userNameInput" placeholder="Username">`
-  );
-  const passInput = $(
-    `<input type="password" id="passInput" placeholder="Password">`
-  );
-  
-  const loginBtn = $(`<button id="loginBtn">Login</button>`);
-  const registerBtn = $(`<button id="RegisterBtn">Register</button>`);
-  const guestsBtn = $(`<button id="guestsBtn">Guest</button>`);
-  
-  const followUs = $(`<p>Follow us on social media:</p>`);
-  
-  const facebookLink = $(
-    `<a href="https://www.facebook.com/kmdb" target="_blank">
+function loadUsers() {
+  return JSON.parse(localStorage.getItem("users")) || [];
+}
+
+function saveUsers(users) {
+  localStorage.setItem("users", JSON.stringify(users));
+}
+
+function loadUserLists() {
+  if (currentUser) {
+    favorites =
+      JSON.parse(localStorage.getItem(`${currentUser}_favorites`)) || [];
+    watchlist =
+      JSON.parse(localStorage.getItem(`${currentUser}_watchlist`)) || [];
+  }
+}
+
+function saveUserLists() {
+  if (currentUser) {
+    localStorage.setItem(`${currentUser}_favorites`, JSON.stringify(favorites));
+    localStorage.setItem(`${currentUser}_watchlist`, JSON.stringify(watchlist));
+  }
+}
+
+const body = $(`body`);
+const header = $(`<header class ="header" ></header>`);
+const main = $(`<main " class = "main"></main>`);
+
+body.append(header, main);
+
+header.hide();
+main.hide();
+
+const welcomePage = $(`<div class ="welcome_page"></div>`);
+const logo = $(`<div class ="logo">KMDB</div>`);
+const heading = $(`<h1>Welcome to KMDB</h1>`);
+const description = $(
+  `<p>Your ultimate movie database. Please login or register to continue.</p>`
+);
+const userNameInput = $(
+  `<input type="text" id="userNameInput" placeholder="Username">`
+);
+const passInput = $(
+  `<input type="password" id="passInput" placeholder="Password">`
+);
+
+const loginBtn = $(`<button id="loginBtn">Login</button>`);
+const registerBtn = $(`<button id="RegisterBtn">Register</button>`);
+const guestsBtn = $(`<button id="guestsBtn">Guest</button>`);
+
+const followUs = $(`<p>Follow us on social media:</p>`);
+
+const facebookLink = $(
+  `<a href="https://www.facebook.com/kmdb" target="_blank">
       <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
     </a>`
-  );
-  
-  const instagramLink = $(
-    `<a href="https://www.instagram.com/kmdb" target="_blank">
+);
+
+const instagramLink = $(
+  `<a href="https://www.instagram.com/kmdb" target="_blank">
       <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
     </a>`
+);
+
+const socialMediaContainer = $(`<div class="social-media-links"></div>`).append(
+  facebookLink,
+  instagramLink
+);
+
+const credits = $(`<div class="credits"></div>`);
+const creditText = $(`<p>Created by Khaled Al-Khateeb</p>`);
+const thanksText = $(
+  `<p>Special thanks to <a href="https://www.meraki-academy.org/" target="_blank">Meraki Academy</a></p>`
+);
+
+credits.append(creditText, thanksText);
+
+welcomePage.append(
+  logo,
+  heading,
+  description,
+  userNameInput,
+  passInput,
+  loginBtn,
+  registerBtn,
+  guestsBtn,
+  followUs,
+  socialMediaContainer,
+  credits
+);
+
+body.append(welcomePage);
+
+function loadUsers() {
+  return JSON.parse(localStorage.getItem("users")) || [];
+}
+
+function saveUsers(users) {
+  localStorage.setItem("users", JSON.stringify(users));
+}
+
+// Login function
+function login() {
+  const username = $("#userNameInput").val();
+  const password = $("#passInput").val();
+  const users = loadUsers();
+  const user = users.find(
+    (u) => u.username === username && u.password === password
   );
-  
-  const socialMediaContainer = $(`<div class="social-media-links"></div>`).append(
-    facebookLink,
-    instagramLink
-  );
-  
-  const credits = $(`<div class="credits"></div>`);
-  const creditText = $(`<p>Created by Khaled Al-Khateeb</p>`);
-  const thanksText = $(
-    `<p>Special thanks to <a href="https://www.meraki-academy.org/" target="_blank">Meraki Academy</a></p>`
-  );
-  
-  credits.append(creditText, thanksText);
-  
-  welcomePage.append(
-    logo,
-    heading,
-    description,
-    userNameInput,
-    passInput,
-    loginBtn,
-    registerBtn,
-    guestsBtn,
-    followUs,
-    socialMediaContainer,
-    credits
-  );
-  
-  body.append(welcomePage);
-  
-  function loadUsers() {
-    return JSON.parse(localStorage.getItem("users")) || [];
+  if (username === "") {
+    alert("Add Username");
+  } else if (password === "") {
+    alert("Add Password");
+  } else if (user) {
+    mainScreenHeadingDiv.show();
+    mainScreenHeadingDiv.empty();
+    mainScreenHeadingDiv.append($(`<h>Main Page</h>`));
+    $("#filter").val("");
+    nav = "other";
+    filterDiv.show();
+    searchDiv.show();
+    subFilterDiv.empty();
+    filterMoviesByCategory("Main Page");
+    currentUser = username;
+    loadUserLists();
+    $(".welcome_page").hide();
+    header.show();
+    main.show();
+  } else {
+    alert("Invalid username or password");
   }
-  
-  function saveUsers(users) {
-    localStorage.setItem("users", JSON.stringify(users));
-  }
-  
-  function login() {
-    const username = $("#userNameInput").val();
-    const password = $("#passInput").val();
-    const users = loadUsers();
-    const user = users.find(
-      (u) => u.username === username && u.password === password
-    );
-  
-    if (user) {
-      $(".welcome_page").hide();
-      header.show();
-      main.show();
-    } else {
-      alert("Invalid username or password");
-    }
-  }
-  
-  function register() {
-    const username = $("#userNameInput").val();
-    const password = $("#passInput").val();
-    let users = loadUsers();
-  
-    if (users.some((u) => u.username === username)) {
-      alert("Username already exists");
-    } else {
-      users.push({ username, password });
-      saveUsers(users);
-      alert("Registration successful");
-      $(".welcome_page").hide();
-      header.show();
-      main.show();
-    }
-  }
-  
-  function guest() {
+}
+
+// Register function
+function register() {
+  const username = $("#userNameInput").val();
+  const password = $("#passInput").val();
+  let users = loadUsers();
+  if (username === "") {
+    alert("Add Username");
+  } else if (password === "") {
+    alert("Add Password");
+  } else if (users.some((u) => u.username === username)) {
+    alert("Username already exists");
+  } else {
+    users.push({ username, password });
+    saveUsers(users);
+    alert("Registration successful");
+    mainScreenHeadingDiv.show();
+    mainScreenHeadingDiv.empty();
+    mainScreenHeadingDiv.append($(`<h>Main Page</h>`));
+    $("#filter").val("");
+    nav = "other";
+    filterDiv.show();
+    searchDiv.show();
+    subFilterDiv.empty();
+    filterMoviesByCategory("Main Page");
+    currentUser = username;
     $(".welcome_page").hide();
     header.show();
     main.show();
   }
-  
-  $(loginBtn).on("click", login);
-  $(registerBtn).on("click", register);
-  $(guestsBtn).on("click", guest);
-  
+}
+
+// Guest function
+function guest() {
+  mainScreenHeadingDiv.show();
+  mainScreenHeadingDiv.empty();
+  mainScreenHeadingDiv.append($(`<h>Main Page</h>`));
+  $("#filter").val("");
+  nav = "other";
+  filterDiv.show();
+  searchDiv.show();
+  subFilterDiv.empty();
+  filterMoviesByCategory("Main Page");
+  currentUser = null;
+  $(".welcome_page").hide();
+  header.show();
+  main.show();
+}
+
+$(loginBtn).on("click", login);
+$(registerBtn).on("click", register);
+$(guestsBtn).on("click", guest);
+
 const title = $(
   `<h id="refreshText" style="cursor: pointer"><strong>KMDb</strong></h>`
 );
@@ -494,6 +557,9 @@ myListsDiv.append(favoritesBtn, watchlistBtn);
 const logoutBtn = $(`<button class ="logoutBtn">Logout</button>`);
 
 logoutBtn.on("click", () => {
+  currentUser = null;
+  favorites = [];
+  watchlist = [];
   $(".welcome_page").show();
   header.hide();
   main.hide();
@@ -699,32 +765,15 @@ function toggleFavorite(movieId) {
   } else {
     favorites.push(movieId);
   }
-
-  localStorage.setItem("favorites", JSON.stringify(favorites));
-  currentFavoritesMovies = movies.filter((movie) =>
-    favorites.includes(movie.id)
-  );
-
-  localStorage.setItem(
-    "currentFavoritesMovies",
-    JSON.stringify(currentFavoritesMovies)
-  );
+  saveUserLists();
 }
-
 function toggleWatchlist(movieId) {
   if (watchlist.includes(movieId)) {
     watchlist = watchlist.filter((id) => id !== movieId);
   } else {
     watchlist.push(movieId);
   }
-  localStorage.setItem("watchlist", JSON.stringify(watchlist));
-  currentWatchlistMovies = movies.filter((movie) =>
-    watchlist.includes(movie.id)
-  );
-  localStorage.setItem(
-    "currentWatchlistMovies",
-    JSON.stringify(currentWatchlistMovies)
-  );
+  saveUserLists();
 }
 
 let currentMovies = movies;

@@ -352,13 +352,13 @@ const guestsBtn = $(`<button id="guestsBtn">Guest</button>`);
 const followUs = $(`<p>Follow us on social media:</p>`);
 
 const facebookLink = $(
-  `<a href="https://www.facebook.com/kmdb" target="_blank">
+  `<a href="https://www.facebook.com/profile.php?id=100045315974354&mibextid=ZbWKwL" target="_blank">
       <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
     </a>`
 );
 
 const instagramLink = $(
-  `<a href="https://www.instagram.com/kmdb" target="_blank">
+  `<a href="https://www.instagram.com/khaled.ktb96?igsh=eWU0dWVnOGg0ZXI2" target="_blank">
       <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
     </a>`
 );
@@ -434,6 +434,9 @@ function login() {
 
     userNameDisplay.text(`User:  ${currentUser}`);
     $(".welcome_page").hide();
+
+
+
     header.show();
     main.show();
 

@@ -12,7 +12,7 @@ const movies = [
     duration: 152,
     director: "Christopher Nolan",
     boxOffice: "$1.005 billion",
-    trailerLink: "https://www.youtube.com/watch?v=EXeTwQWrcwY",
+    trailerLink: "https://www.youtube.com/embed/EXeTwQWrcwY",
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ const movies = [
     duration: 148,
     director: "Christopher Nolan",
     boxOffice: "$836.8 million",
-    trailerLink: "https://www.youtube.com/watch?v=YoHD9XEInc0",
+    trailerLink: "https://www.youtube.com/embed/YoHD9XEInc0",
   },
   {
     id: 3,
@@ -42,7 +42,7 @@ const movies = [
     duration: 81,
     director: "John Lasseter",
     boxOffice: "$373.6 million",
-    trailerLink: "https://www.youtube.com/watch?v=KYz2wyBy3kc",
+    trailerLink: "https://www.youtube.com/embed/KYz2wyBy3kc",
   },
   {
     id: 4,
@@ -57,7 +57,7 @@ const movies = [
     duration: 132,
     director: "Bong Joon-ho",
     boxOffice: "$263.1 million",
-    trailerLink: "https://www.youtube.com/watch?v=5xH0HfJHsaY",
+    trailerLink: "https://www.youtube.com/embed/5xH0HfJHsaY",
   },
   {
     id: 5,
@@ -72,7 +72,7 @@ const movies = [
     duration: 112,
     director: "James Wan",
     boxOffice: "$319.5 million",
-    trailerLink: "https://www.youtube.com/watch?v=k10ETZ41q5o",
+    trailerLink: "https://www.youtube.com/embed/k10ETZ41q5o",
   },
   {
     id: 6,
@@ -87,7 +87,7 @@ const movies = [
     duration: 125,
     director: "Hayao Miyazaki",
     boxOffice: "$395.8 million",
-    trailerLink: "https://www.youtube.com/watch?v=ByXuk9QqQkk",
+    trailerLink: "https://www.youtube.com/embed/ByXuk9QqQkk",
   },
   {
     id: 7,
@@ -102,7 +102,7 @@ const movies = [
     duration: 181,
     director: "Anthony and Joe Russo",
     boxOffice: "$2.798 billion",
-    trailerLink: "https://www.youtube.com/watch?v=TcMBFSGVi1c",
+    trailerLink: "https://www.youtube.com/embed/TcMBFSGVi1c",
   },
   {
     id: 8,
@@ -117,7 +117,7 @@ const movies = [
     duration: 100,
     director: "Todd Phillips",
     boxOffice: "$469.3 million",
-    trailerLink: "https://www.youtube.com/watch?v=tcdUhdOlz9M",
+    trailerLink: "https://www.youtube.com/embed/tcdUhdOlz9M",
   },
   {
     id: 9,
@@ -132,7 +132,7 @@ const movies = [
     duration: 104,
     director: "Jordan Peele",
     boxOffice: "$255.4 million",
-    trailerLink: "https://www.youtube.com/watch?v=DzfpyUB60YY",
+    trailerLink: "https://www.youtube.com/embed/DzfpyUB60YY",
   },
   {
     id: 10,
@@ -147,7 +147,7 @@ const movies = [
     duration: 136,
     director: "The Wachowskis",
     boxOffice: "$466.6 million",
-    trailerLink: "https://www.youtube.com/watch?v=vKQi3bBA1y8",
+    trailerLink: "https://www.youtube.com/embed/vKQi3bBA1y8",
   },
   {
     id: 11,
@@ -162,7 +162,7 @@ const movies = [
     duration: 154,
     director: "Quentin Tarantino",
     boxOffice: "$213.9 million",
-    trailerLink: "https://www.youtube.com/watch?v=s7EdQ4FqbhY",
+    trailerLink: "https://www.youtube.com/embed/s7EdQ4FqbhY",
   },
   {
     id: 12,
@@ -177,7 +177,7 @@ const movies = [
     duration: 100,
     director: "Andrew Stanton",
     boxOffice: "$940.3 million",
-    trailerLink: "https://www.youtube.com/watch?v=wZdpNglLbt8",
+    trailerLink: "https://www.youtube.com/embed/wZdpNglLbt8",
   },
   {
     id: 13,
@@ -192,7 +192,7 @@ const movies = [
     duration: 138,
     director: "Martin Scorsese",
     boxOffice: "$294.8 million",
-    trailerLink: "https://www.youtube.com/watch?v=5iaYLCiq5RM",
+    trailerLink: "https://www.youtube.com/embed/5iaYLCiq5RM",
   },
   {
     id: 14,
@@ -207,7 +207,7 @@ const movies = [
     duration: 90,
     director: "John Krasinski",
     boxOffice: "$340.9 million",
-    trailerLink: "https://www.youtube.com/watch?v=WR7cc5t7tv8",
+    trailerLink: "https://www.youtube.com/embed/WR7cc5t7tv8",
   },
   {
     id: 15,
@@ -222,7 +222,7 @@ const movies = [
     duration: 86,
     director: "Hayao Miyazaki",
     boxOffice: "$41 million",
-    trailerLink: "https://www.youtube.com/watch?v=92a7Hj0ijLs",
+    trailerLink: "https://www.youtube.com/embed/92a7Hj0ijLs",
   },
   {
     id: 16,
@@ -237,7 +237,7 @@ const movies = [
     duration: 121,
     director: "James Gunn",
     boxOffice: "$772.8 million",
-    trailerLink: "https://www.youtube.com/watch?v=d96cjJhvlMA",
+    trailerLink: "https://www.youtube.com/embed/d96cjJhvlMA",
   },
   {
     id: 17,
@@ -252,7 +252,7 @@ const movies = [
     duration: 135,
     director: "Andy Muschietti",
     boxOffice: "$701.8 million",
-    trailerLink: "https://www.youtube.com/watch?v=hAUTdjf9rko",
+    trailerLink: "https://www.youtube.com/embed/hAUTdjf9rko",
   },
   {
     id: 18,
@@ -267,7 +267,7 @@ const movies = [
     duration: 106,
     director: "Makoto Shinkai",
     boxOffice: "$380.1 million",
-    trailerLink: "https://www.youtube.com/watch?v=xU47nhruN-Q",
+    trailerLink: "https://www.youtube.com/embed/xU47nhruN-Q",
   },
   {
     id: 19,
@@ -282,7 +282,7 @@ const movies = [
     duration: 108,
     director: "Tim Miller",
     boxOffice: "$782.6 million",
-    trailerLink: "https://www.youtube.com/watch?v=ONHBaC-pfsk",
+    trailerLink: "https://www.youtube.com/embed/ONHBaC-pfsk",
   },
   {
     id: 20,
@@ -297,7 +297,7 @@ const movies = [
     duration: 146,
     director: "Stanley Kubrick",
     boxOffice: "$47.3 million",
-    trailerLink: "https://www.youtube.com/watch?v=S014oGZiSdI",
+    trailerLink: "https://www.youtube.com/embed/S014oGZiSdI",
   },
 ];
 
@@ -306,8 +306,6 @@ let favorites = [];
 let watchlist = [];
 let currentFavoritesMovies = [];
 let currentWatchlistMovies = [];
-
-
 
 function loadUserLists() {
   if (currentUser) {
@@ -417,7 +415,7 @@ function login() {
     (u) => u.username === username && u.password === password
   );
   const stayLoggedIn = $("#stayLoggedIn").is(":checked");
-  
+
   if (username === "") {
     alert("Add Username");
   } else if (password === "") {
@@ -428,10 +426,10 @@ function login() {
 
     if (stayLoggedIn) {
       localStorage.setItem("loggedInUser", currentUser);
-      sessionStorage.removeItem("loggedInUser"); 
+      sessionStorage.removeItem("loggedInUser");
     } else {
       sessionStorage.setItem("loggedInUser", currentUser);
-      localStorage.removeItem("loggedInUser"); 
+      localStorage.removeItem("loggedInUser");
     }
 
     userNameDisplay.text(`User:  ${currentUser}`);
@@ -470,15 +468,15 @@ function register() {
     saveUsers(users);
     alert("Registration successful");
     currentUser = username;
-    loadUserLists(); 
+    loadUserLists();
     const stayLoggedIn = $("#stayLoggedIn").is(":checked");
 
     if (stayLoggedIn) {
       localStorage.setItem("loggedInUser", currentUser);
-      sessionStorage.removeItem("loggedInUser"); 
+      sessionStorage.removeItem("loggedInUser");
     } else {
       sessionStorage.setItem("loggedInUser", currentUser);
-      localStorage.removeItem("loggedInUser"); 
+      localStorage.removeItem("loggedInUser");
     }
     userNameDisplay.text(`User:  ${currentUser}`);
     $(".welcome_page").hide();
@@ -540,7 +538,7 @@ title.on("click", function () {
   searchDiv.show();
   subFilterDiv.empty();
   filterMoviesByCategory("Main Page");
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
 body.addClass("dark-mode");
@@ -595,7 +593,7 @@ movieListsDiv.append(
 
 myListsDiv.append(favoritesBtn, watchlistBtn);
 
-$(document).ready(function() {
+$(document).ready(function () {
   const savedUser = localStorage.getItem("loggedInUser");
 
   if (savedUser) {
@@ -620,8 +618,6 @@ $(document).ready(function() {
     filterMoviesByCategory("Main Page");
   }
 });
-
-
 
 logoutBtn.on("click", () => {
   currentUser = null;
@@ -667,19 +663,28 @@ function showMovieDetails(movie) {
   filterDiv.hide();
   searchDiv.hide();
 
-  let ratings = JSON.parse(localStorage.getItem(`movie-ratings-${movie.id}`)) || {};
+  let ratings =
+    JSON.parse(localStorage.getItem(`movie-ratings-${movie.id}`)) || {};
   let userRating = ratings[currentUser] || movie.rate;
-  
-  let averageRating = Object.values(ratings).reduce((acc, rating) => acc + rating, 0) / Object.keys(ratings).length || movie.rate;
+
+  let averageRating =
+    Object.values(ratings).reduce((acc, rating) => acc + rating, 0) /
+      Object.keys(ratings).length || movie.rate;
 
   const ratingText =
     averageRating > 0
-      ? `<p><strong>Average Rate: </strong><span id="movieRate">${averageRating.toFixed(1)}</span></p>`
+      ? `<p><strong>Average Rate: </strong><span id="movieRate">${averageRating.toFixed(
+          1
+        )}</span></p>`
       : `<p><strong>Average Rate: </strong><span id="movieRate">No rating yet. Be the first one to rate!</span></p>`;
 
   const movieDetailDiv = $(`
     <div class="movie_detail_area">
-      <img src=${movie.imageSrc} width="200" height="200">        
+      <div class="video-container">
+        <iframe class="movie-trailer" src="${
+          movie.trailerLink
+        }" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>      
       <h2>${movie.movieName}</h2>
       <p><strong>Actors: </strong>${movie.actors.join(", ")}</p>
       <p><strong>Description: </strong>${movie.description}</p>
@@ -689,7 +694,6 @@ function showMovieDetails(movie) {
       <p><strong>Categories: </strong>${movie.categories.join(", ")}</p>
       <p><strong>Director: </strong>${movie.director}</p>
       <p><strong>Box Office: </strong>${movie.boxOffice}</p>
-      <p><a href=${movie.trailerLink} target="_blank" class="trailer-link"><strong>Trailer</strong></a></p>
       <button id="backBtn">Back to List</button>
       <button class="favBtn" id="favBtn">${
         favorites.includes(movie.id) ? "Remove from Favorites" : "Favorite"
@@ -713,9 +717,14 @@ function showMovieDetails(movie) {
 
     star.on("click", function () {
       ratings[currentUser] = i;
-      localStorage.setItem(`movie-ratings-${movie.id}`, JSON.stringify(ratings));
+      localStorage.setItem(
+        `movie-ratings-${movie.id}`,
+        JSON.stringify(ratings)
+      );
 
-      averageRating = Object.values(ratings).reduce((acc, rating) => acc + rating, 0) / Object.keys(ratings).length;
+      averageRating =
+        Object.values(ratings).reduce((acc, rating) => acc + rating, 0) /
+        Object.keys(ratings).length;
 
       $("#movieRate").text(averageRating.toFixed(1));
 
@@ -751,7 +760,6 @@ function showMovieDetails(movie) {
   });
 }
 
-
 function displayMovies(movies) {
   moviesDiv.empty();
   showedMoviesDiv.empty();
@@ -759,8 +767,11 @@ function displayMovies(movies) {
   showedMoviesDiv.append(numberOfShowedMovies);
 
   movies.forEach((movie) => {
-    let ratings = JSON.parse(localStorage.getItem(`movie-ratings-${movie.id}`)) || {};
-    let averageRating = Object.values(ratings).reduce((acc, rating) => acc + rating, 0) / Object.keys(ratings).length || movie.rate;
+    let ratings =
+      JSON.parse(localStorage.getItem(`movie-ratings-${movie.id}`)) || {};
+    let averageRating =
+      Object.values(ratings).reduce((acc, rating) => acc + rating, 0) /
+        Object.keys(ratings).length || movie.rate;
 
     const ratingText =
       averageRating > 0
@@ -822,8 +833,6 @@ function displayMovies(movies) {
     });
   });
 }
-
-
 
 function toggleFavorite(movieId) {
   if (favorites.includes(movieId)) {
@@ -1183,5 +1192,3 @@ $("#filter").on("change", function () {
     filterMoviesByCategory(currentCategory);
   }
 });
-
-

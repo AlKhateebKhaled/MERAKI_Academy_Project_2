@@ -68,6 +68,7 @@ body {
 
 .welcome_page button:hover {
   background-color: #f1c40f; 
+  color: #000;
   transform: scale(1.02);
 }
 
@@ -514,9 +515,21 @@ button.detailsBtn:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.movie_detail_area img {
+.movie-trailer {
   width: 50%;
-  height: 300px;
+  max-width: 560px; 
+  height: 300px; 
+  border-radius: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.video-container {
+  text-align: center; 
+}
+
+
+.movie_detail_area img {
+  width: 100%;
   border-radius: 4px;
 }
 
@@ -881,6 +894,11 @@ body {
       width: 100px;
       }
   
+      .light-mode .logoutBtn{
+        width: 100px;
+        background-color: #f5f5f5;
+        color: #1a1a1a;
+      }
 
   button.favBtn {
     width: 100%;
@@ -993,4 +1011,11 @@ body {
  .showedMoviesDiv_area{
   font-size: 13px;
  }
+
+ .movie-trailer {
+  width: 90%;
+  height: 300px; 
+}
+
+
 }

@@ -145,6 +145,49 @@ body {
   width: 100%
 }
 
+.checkbox-container {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-container input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-container input[type="checkbox"] + span {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.checkbox-container input[type="checkbox"]:checked + span {
+  background-color: #f5c518; 
+  border-color: #f5c518;
+}
+
+.checkbox-container input[type="checkbox"]:checked + span::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  width: 6px;
+  height: 12px;
+  border: solid #000;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-container label {
+  margin-left: 8px;
+  font-size: 14px; 
+  color: #ffffff; 
+}
+
+
 #themeToggle{
   padding: 8px 12px;
   font-size: 16px;
@@ -204,11 +247,11 @@ body {
 }
 
 .myListsDiv {
-  margin-top: 25px;
+  margin-top: 40px;
 }
 
 .userinfoDiv{
-  margin-top: 25px;
+  margin-top: 50px;
 
 }
 
@@ -357,6 +400,26 @@ button#watchlistBtn1
   width: 150px;
   background-color: #000; 
   color: #f5c518; 
+}
+
+.userNameDisplay {
+  font-size: 20px;
+  padding: 8px 0;
+  max-width: 150px;
+  display: block;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #f5c518;
+  background-color: #000; 
+  text-align: center;
+
+}
+
+.light-mode .userNameDisplay{
+  width: 150px;
+  background-color: #f5f5f5;
+  color: #1a1a1a;
 }
 
 button.logoutBtn{

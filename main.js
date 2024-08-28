@@ -307,13 +307,7 @@ let watchlist = [];
 let currentFavoritesMovies = [];
 let currentWatchlistMovies = [];
 
-function loadUsers() {
-  return JSON.parse(localStorage.getItem("users")) || [];
-}
 
-function saveUsers(users) {
-  localStorage.setItem("users", JSON.stringify(users));
-}
 
 function loadUserLists() {
   if (currentUser) {
@@ -384,12 +378,20 @@ const thanksText = $(
 
 credits.append(creditText, thanksText);
 
+const stayLoggedInCheckbox = $(`
+<div class="checkbox-container">
+  <input type="checkbox" id="stayLoggedIn">
+  <span></span>
+  <label for="stayLoggedIn">Stay logged in</label>
+</div>`);
+
 welcomePage.append(
   logo,
   heading,
   description,
   userNameInput,
   passInput,
+  stayLoggedInCheckbox,
   loginBtn,
   registerBtn,
   guestsBtn,
@@ -407,8 +409,6 @@ function loadUsers() {
 function saveUsers(users) {
   localStorage.setItem("users", JSON.stringify(users));
 }
-
-// Login function
 function login() {
   const username = $("#userNameInput").val();
   const password = $("#passInput").val();
@@ -416,31 +416,45 @@ function login() {
   const user = users.find(
     (u) => u.username === username && u.password === password
   );
+  const stayLoggedIn = $("#stayLoggedIn").is(":checked");
+  
   if (username === "") {
     alert("Add Username");
   } else if (password === "") {
     alert("Add Password");
   } else if (user) {
+    currentUser = username;
+    loadUserLists();
+
+    if (stayLoggedIn) {
+      localStorage.setItem("loggedInUser", currentUser);
+      sessionStorage.removeItem("loggedInUser"); 
+    } else {
+      sessionStorage.setItem("loggedInUser", currentUser);
+      localStorage.removeItem("loggedInUser"); 
+    }
+
+    userNameDisplay.text(`User:  ${currentUser}`);
+    $(".welcome_page").hide();
+    header.show();
+    main.show();
+
     mainScreenHeadingDiv.show();
     mainScreenHeadingDiv.empty();
     mainScreenHeadingDiv.append($(`<h>Main Page</h>`));
     $("#filter").val("");
     nav = "other";
+
     filterDiv.show();
     searchDiv.show();
     subFilterDiv.empty();
+
     filterMoviesByCategory("Main Page");
-    currentUser = username;
-    loadUserLists();
-    $(".welcome_page").hide();
-    header.show();
-    main.show();
   } else {
     alert("Invalid username or password");
   }
 }
 
-// Register function
 function register() {
   const username = $("#userNameInput").val();
   const password = $("#passInput").val();
@@ -455,23 +469,36 @@ function register() {
     users.push({ username, password });
     saveUsers(users);
     alert("Registration successful");
+    currentUser = username;
+    loadUserLists(); 
+    const stayLoggedIn = $("#stayLoggedIn").is(":checked");
+
+    if (stayLoggedIn) {
+      localStorage.setItem("loggedInUser", currentUser);
+      sessionStorage.removeItem("loggedInUser"); 
+    } else {
+      sessionStorage.setItem("loggedInUser", currentUser);
+      localStorage.removeItem("loggedInUser"); 
+    }
+    userNameDisplay.text(`User:  ${currentUser}`);
+    $(".welcome_page").hide();
+    header.show();
+    main.show();
+
     mainScreenHeadingDiv.show();
     mainScreenHeadingDiv.empty();
     mainScreenHeadingDiv.append($(`<h>Main Page</h>`));
     $("#filter").val("");
     nav = "other";
+
     filterDiv.show();
     searchDiv.show();
     subFilterDiv.empty();
+
     filterMoviesByCategory("Main Page");
-    currentUser = username;
-    $(".welcome_page").hide();
-    header.show();
-    main.show();
   }
 }
 
-// Guest function
 function guest() {
   mainScreenHeadingDiv.show();
   mainScreenHeadingDiv.empty();
@@ -484,6 +511,7 @@ function guest() {
   filterMoviesByCategory("Main Page");
   currentUser = null;
   $(".welcome_page").hide();
+  userNameDisplay.text(`User : Guest`);
   header.show();
   main.show();
 }
@@ -493,7 +521,7 @@ $(registerBtn).on("click", register);
 $(guestsBtn).on("click", guest);
 
 const title = $(
-  `<h id="refreshText" style="cursor: pointer"><strong>KMDb</strong></h>`
+  `<h id="refreshText" style="cursor: pointer"><strong>KMDB</strong></h>`
 );
 header.append(title);
 
@@ -502,7 +530,17 @@ const themeToggle = $(`<button id="themeToggle">Light Mode</button>`);
 header.append(themeToggle);
 
 title.on("click", function () {
-  location.reload();
+  mainScreenHeadingDiv.show();
+  mainScreenHeadingDiv.empty();
+  mainScreenHeadingDiv.append($(`<h>Main Page</h>`));
+
+  $("#filter").val("");
+  nav = "other";
+  filterDiv.show();
+  searchDiv.show();
+  subFilterDiv.empty();
+  filterMoviesByCategory("Main Page");
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 body.addClass("dark-mode");
@@ -529,6 +567,9 @@ const myListsDiv = $(`<div class="myListsDiv"></div>`);
 categoryDiv.append(myListsDiv);
 
 const userinfoDiv = $(`<div class="userinfoDiv"></div>`);
+const userNameDisplay = $(`<span class="userNameDisplay"></span>`);
+const logoutBtn = $(`<button class ="logoutBtn">Logout</button>`);
+userinfoDiv.append(userNameDisplay, logoutBtn);
 categoryDiv.append(userinfoDiv);
 
 const mainPageBtn = $(`<button class ="mainPageBtn">Main Page</button>`);
@@ -554,7 +595,33 @@ movieListsDiv.append(
 
 myListsDiv.append(favoritesBtn, watchlistBtn);
 
-const logoutBtn = $(`<button class ="logoutBtn">Logout</button>`);
+$(document).ready(function() {
+  const savedUser = localStorage.getItem("loggedInUser");
+
+  if (savedUser) {
+    currentUser = savedUser;
+    loadUserLists();
+
+    userNameDisplay.text(`User:  ${currentUser}`);
+    $(".welcome_page").hide();
+    header.show();
+    main.show();
+
+    mainScreenHeadingDiv.show();
+    mainScreenHeadingDiv.empty();
+    mainScreenHeadingDiv.append($(`<h>Main Page</h>`));
+    $("#filter").val("");
+    nav = "other";
+
+    filterDiv.show();
+    searchDiv.show();
+    subFilterDiv.empty();
+
+    filterMoviesByCategory("Main Page");
+  }
+});
+
+
 
 logoutBtn.on("click", () => {
   currentUser = null;
@@ -600,17 +667,15 @@ function showMovieDetails(movie) {
   filterDiv.hide();
   searchDiv.hide();
 
-  let storedRating = localStorage.getItem(`movie-rating-${movie.id}`);
-  if (storedRating) {
-    storedRating = parseInt(storedRating);
-  } else {
-    storedRating = movie.rate;
-  }
+  let ratings = JSON.parse(localStorage.getItem(`movie-ratings-${movie.id}`)) || {};
+  let userRating = ratings[currentUser] || movie.rate;
+  
+  let averageRating = Object.values(ratings).reduce((acc, rating) => acc + rating, 0) / Object.keys(ratings).length || movie.rate;
 
   const ratingText =
-    storedRating > 0
-      ? `<p><strong>Rate: </strong><span id="movieRate">${storedRating}</span></p>`
-      : `<p><strong>Rate: </strong>No rating yet. Be the first one to rate!</p>`;
+    averageRating > 0
+      ? `<p><strong>Average Rate: </strong><span id="movieRate">${averageRating.toFixed(1)}</span></p>`
+      : `<p><strong>Average Rate: </strong><span id="movieRate">No rating yet. Be the first one to rate!</span></p>`;
 
   const movieDetailDiv = $(`
     <div class="movie_detail_area">
@@ -624,9 +689,7 @@ function showMovieDetails(movie) {
       <p><strong>Categories: </strong>${movie.categories.join(", ")}</p>
       <p><strong>Director: </strong>${movie.director}</p>
       <p><strong>Box Office: </strong>${movie.boxOffice}</p>
-      <p><a href=${
-        movie.trailerLink
-      } target="_blank" class="trailer-link"><strong>Trailer</strong></a></p>
+      <p><a href=${movie.trailerLink} target="_blank" class="trailer-link"><strong>Trailer</strong></a></p>
       <button id="backBtn">Back to List</button>
       <button class="favBtn" id="favBtn">${
         favorites.includes(movie.id) ? "Remove from Favorites" : "Favorite"
@@ -644,14 +707,17 @@ function showMovieDetails(movie) {
       `<button class="star"><span class="fa fa-star"></span></button>`
     );
 
-    if (i <= storedRating) {
+    if (i <= userRating) {
       star.find(".fa-star").addClass("checked");
     }
 
     star.on("click", function () {
-      localStorage.setItem(`movie-rating-${movie.id}`, i);
+      ratings[currentUser] = i;
+      localStorage.setItem(`movie-ratings-${movie.id}`, JSON.stringify(ratings));
 
-      $("#movieRate").text(i);
+      averageRating = Object.values(ratings).reduce((acc, rating) => acc + rating, 0) / Object.keys(ratings).length;
+
+      $("#movieRate").text(averageRating.toFixed(1));
 
       rate.children(".star").find(".fa-star").removeClass("checked");
       rate.children(".star").slice(0, i).find(".fa-star").addClass("checked");
@@ -685,22 +751,20 @@ function showMovieDetails(movie) {
   });
 }
 
+
 function displayMovies(movies) {
   moviesDiv.empty();
   showedMoviesDiv.empty();
-  const numberOfShowedMovies = "Showed Movies : " + currentMovies.length;
+  const numberOfShowedMovies = "Showed Movies : " + movies.length;
   showedMoviesDiv.append(numberOfShowedMovies);
+
   movies.forEach((movie) => {
-    let storedRating = localStorage.getItem(`movie-rating-${movie.id}`);
-    if (storedRating) {
-      storedRating = parseInt(storedRating);
-    } else {
-      storedRating = movie.rate;
-    }
+    let ratings = JSON.parse(localStorage.getItem(`movie-ratings-${movie.id}`)) || {};
+    let averageRating = Object.values(ratings).reduce((acc, rating) => acc + rating, 0) / Object.keys(ratings).length || movie.rate;
 
     const ratingText =
-      storedRating > 0
-        ? `<p><strong>Rate: </strong>${storedRating}</p>`
+      averageRating > 0
+        ? `<p><strong>Rate: </strong>${averageRating.toFixed(1)}</p>`
         : `<p><strong>Rate: </strong>No rating yet. Be the first one to rate!</p>`;
 
     const movieDiv = $(`
@@ -708,7 +772,7 @@ function displayMovies(movies) {
         <div class="movieinfo_area">
           <img src=${movie.imageSrc} width="200" height="200">        
           <h2>${movie.movieName}</h2>
-          <p><strong>releaseYear: </strong>${movie.releaseYear}</p>
+          <p><strong>Release Year: </strong>${movie.releaseYear}</p>
           ${ratingText}
           <p><strong>Categories: </strong>${movie.categories.join(", ")}</p>
           </div>
@@ -758,6 +822,8 @@ function displayMovies(movies) {
     });
   });
 }
+
+
 
 function toggleFavorite(movieId) {
   if (favorites.includes(movieId)) {
@@ -1117,3 +1183,5 @@ $("#filter").on("change", function () {
     filterMoviesByCategory(currentCategory);
   }
 });
+
+

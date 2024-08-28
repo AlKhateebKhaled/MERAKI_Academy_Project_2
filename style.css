@@ -189,23 +189,47 @@ body {
 }
 
 
-#themeToggle{
-  padding: 8px 12px;
+#themeToggle {
+  padding: 10px 16px;
   font-size: 16px;
+  font-weight: 600;
   border: none;
-  background-color: #f5f5f5;
+  background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
   color: #1a1a1a;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   position: fixed;
   top: 10px;
-  right: 20px;}
+  right: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
 
+#themeToggle:hover {
+  background: linear-gradient(135deg, #e0e0e0, #cccccc);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+#themeToggle:active {
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+  transform: translateY(1px);
+}
 
 .light-mode #themeToggle {
-  background-color: #000; 
-  color: #f5c518; 
+  background: linear-gradient(135deg, #333, #555);
+  color: #f5c518;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
+
+.light-mode #themeToggle:hover {
+  background: linear-gradient(135deg, #555, #777);
+}
+
+.light-mode #themeToggle:active {
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.3);
+  transform: translateY(1px);
+}
+
 
 .dark-mode {
   background-color: #121212;
@@ -243,9 +267,25 @@ body {
   gap: 10px;
 }
 
-.category_area
-{
+.main::before {
+  content: "";
+  grid-column: 1;
+  grid-row: 1 / span 2; 
+  width: 200px; 
+  height: 100%; 
+  background-color: transparent; 
 }
+
+.category_area {
+  position: fixed;
+  top: 70px; 
+  left: 20px; 
+  width: 200px; 
+  padding: 10px; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  z-index: 1000;
+}
+
 
 .myListsDiv {
   margin-top: 40px;
@@ -319,7 +359,6 @@ body {
 .light-mode #searchBtn:hover {
   background-color: #9e9c9c; 
 }
-
 
 .moviesDiv {
   display: grid;
@@ -790,6 +829,40 @@ body {
 }
 
 @media (max-width: 500px) {
+
+  .main {
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    padding: 20px;
+    gap: 10px;
+  }
+  
+  .main::before {
+    content: "";
+    grid-column: 1;
+    grid-row: 1 / span 2; 
+    width: 120px; 
+    height: 100%; 
+    background-color: transparent; 
+  }
+  
+  .category_area {
+    position: fixed;
+    top: 70px; 
+    left: 20px; 
+    width: 100px; 
+    padding: 10px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    z-index: 1000;
+  }
+
+  .movieListsDiv{
+    display: grid;
+  }
+
+  .myListsDiv{
+    display: grid;
+  }
 
 
   .header {

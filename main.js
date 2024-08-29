@@ -692,9 +692,7 @@ function showMovieDetails(movie) {
 
   const ratingText =
     averageRating > 0
-      ? `<p><strong>Average Rate: </strong><span id="movieRate">${averageRating.toFixed(
-          1
-        )}</span></p>`
+      ? `<p><strong>Average Rate: </strong><span id="movieRate">${averageRating.toFixed(1)}</span></p>`
       : `<p><strong>Average Rate: </strong><span id="movieRate">No rating yet. Be the first one to rate!</span></p>`;
 
   const movieDetailDiv = $(`
@@ -779,95 +777,6 @@ function showMovieDetails(movie) {
   });
 }
 
-function adminShowMovieDetails(movie) {
-  moviesDiv.empty();
-  filterDiv.hide();
-  searchDiv.hide();
-
-  const movieDetailDiv = $(`
-    <div class="movie_detail_area">
-      <div class="video-container">
-        <iframe class="movie-trailer" src="${
-          movie.trailerLink
-        }" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <h2>Edit Movie Details</h2>
-      <div>
-        <label for="movieName">Movie Name:</label>
-        <input type="text" id="movieName" value="${movie.movieName}">
-      </div>
-      <div>
-        <label for="actors">Actors:</label>
-        <input type="text" id="actors" value="${movie.actors.join(", ")}">
-      </div>
-      <div>
-        <label for="description">Description:</label>
-        <textarea id="description">${movie.description}</textarea>
-      </div>
-      <div>
-        <label for="releaseYear">Release Year:</label>
-        <input type="number" id="releaseYear" value="${movie.releaseYear}">
-      </div>
-      <div>
-        <label for="duration">Duration (min):</label>
-        <input type="number" id="duration" value="${movie.duration}">
-      </div>
-      <div>
-        <label for="categories">Categories:</label>
-        <input type="text" id="categories" value="${movie.categories.join(
-          ", "
-        )}">
-      </div>
-      <div>
-        <label for="director">Director:</label>
-        <input type="text" id="director" value="${movie.director}">
-      </div>
-      <div>
-        <label for="boxOffice">Box Office:</label>
-        <input type="text" id="boxOffice" value="${movie.boxOffice}">
-      </div>
-      <button id="saveChangesBtn">Save Changes</button>
-      <button id="backBtn">Back to List</button>
-    </div>
-  `);
-
-  moviesDiv.append(movieDetailDiv);
-
-  $("#saveChangesBtn").on("click", () => {
-    const movieId = parseInt($("#movieId").val(), 10); 
-
-    const updatedMovie = {
-      id: movieId,
-      movieName: $("#movieName").val(),
-      actors: $("#actors")
-        .val()
-        .split(",")
-        .map((a) => a.trim()),
-      description: $("#description").val(),
-      releaseYear: parseInt($("#releaseYear").val(), 10), 
-      duration: parseInt($("#duration").val(), 10),
-      categories: $("#categories")
-        .val()
-        .split(",")
-        .map((c) => c.trim()),
-      director: $("#director").val(),
-      boxOffice: $("#boxOffice").val(),
-      trailerLink: $("#trailerLink").val(), 
-    };
-
-    const movieIndex = movies.findIndex((movie) => movie.id === movieId);
-
-    movies[movieIndex] = updatedMovie;
-
-    alert("Movie details updated successfully.");
-  });
-
-  $("#backBtn").on("click", () => {
-    mainScreenHeadingDiv.show();
-    adminDisplayMovies(currentMovies);
-  });
-}
-
 function displayMovies(movies) {
   moviesDiv.empty();
   showedMoviesDiv.empty();
@@ -946,53 +855,6 @@ function displayMovies(movies) {
   });
 }
 
-function adminDisplayMovies(movies) {
-  moviesDiv.empty();
-  showedMoviesDiv.empty();
-  const numberOfShowedMovies = "Showed Movies : " + movies.length;
-  showedMoviesDiv.append(numberOfShowedMovies);
-
-  movies.forEach((movie) => {
-    let ratings =
-      JSON.parse(localStorage.getItem(`movie-ratings-${movie.id}`)) || {};
-    let averageRating =
-      Object.values(ratings).reduce((acc, rating) => acc + rating, 0) /
-        Object.keys(ratings).length || movie.rate;
-
-    const ratingText =
-      averageRating > 0
-        ? `<p><strong>Rate: </strong>${averageRating.toFixed(1)}</p>`
-        : `<p><strong>Rate: </strong>No rating yet. Be the first one to rate!</p>`;
-
-    const movieDiv = $(`
-        <div class="movie_area">
-        <div class="movieinfo_area">
-          <img src=${movie.imageSrc} width="200" height="200">        
-          <h2>${movie.movieName}</h2>
-          <p><strong>Release Year: </strong>${movie.releaseYear}</p>
-          ${ratingText}
-          <p><strong>Categories: </strong>${movie.categories.join(", ")}</p>
-          </div>
-        <div class="movieBtns_area">
-          <button class="detailsBtn">Edit Details</button>
-        </div>
-        </div>
-      `);
-
-    moviesDiv.append(movieDiv);
-
-    const detailsBtn = movieDiv.find(".detailsBtn");
-    detailsBtn.on("click", () => {
-      mainScreenHeadingDiv.hide();
-      nav = "other";
-      if (currentUser === "Admin") {
-        adminShowMovieDetails(movie);
-      } else {
-        showMovieDetails(movie);
-      }
-    });
-  });
-}
 
 function toggleFavorite(movieId) {
   if (favorites.includes(movieId)) {
@@ -1053,15 +915,13 @@ function filterMoviesByCategory(category) {
     );
   } else if (category === "Search") {
     const searchTerm = searchInput.val().toLowerCase();
-    currentMovies = movies.filter((movie) =>
+    currentMovies = currentMovies.filter((movie) =>
       movie.movieName.toLowerCase().includes(searchTerm)
     );
   }
-  if (currentUser === "Admin") {
-    adminDisplayMovies(currentMovies);
-  } else {
+
     displayMovies(currentMovies);
-  }
+  
 }
 
 function getcurrentMoviesByCategory(category) {
@@ -1356,3 +1216,5 @@ $("#filter").on("change", function () {
     filterMoviesByCategory(currentCategory);
   }
 });
+
+localStorage.clear()

@@ -1217,4 +1217,3 @@ $("#filter").on("change", function () {
   }
 });
 
-localStorage.clear()

@@ -22,7 +22,6 @@
 - [Built Using](#built_using)
 - [Features](#features)
 - [Stretch Goals](#stretch_goals)
-- [License](#license)
 
 ## 🧐 About <a name = "about"></a>
 
@@ -44,3 +43,65 @@ These instructions will help you get the project up and running on your local ma
 
    ```bash
    git clone https://github.com/your_username_/Movies-App.git
+
+2. Navigate to the project directory:
+   ```bash
+   cd MERAKI_Academy_Project_2
+
+3. Open the index.html file in your browser.
+
+
+## 🎈 Usage <a name="usage"></a>
+
+Here are a few examples of how you can use the platform:
+
+- **Browse Movies:** Users can view multiple movie posters with image, description, rating, and title.
+- **Search & Filters:** Users can search for movies and filter by duration, release year, or rating.
+- **Favorites & Watchlist:** Users can add movies to their favorites or watchlist.
+- **Movie Details:** Click on any movie to view more details, including actors, duration, trailer, and box office rating.
+- **Theme Toggle:** Users can switch between light and dark themes.
+
+## ⛏️ Built Using <a name="built_using"></a>
+
+- [JavaScript (ES6)](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - Programming Language
+- [CSS Grid & Flexbox](https://css-tricks.com/snippets/css/complete-guide-grid/) - Layouts
+- [jQuery](https://jquery.com/) - Library for DOM manipulation
+
+## Features <a name="features"></a>
+
+### Core Features
+- **User Authentication:** Users can login, register, or browse as a guest.
+- **Search & Filters:** Users can search and filter movies by duration, release year, and rating.
+- **Favorites & Watchlist:** Users can add movies to their favorites or watchlist.
+- **Theme Toggle:** Light and dark mode functionality.
+- **Responsive Design:** The app is fully responsive for mobile and desktop.
+
+### Movie Cards
+Each movie card displays:
+- **Name**
+- **Description**
+- **Release Year**
+- **Rating**
+- **Categories**
+- **Buttons** for adding to favorites, adding to watchlist, and viewing details.
+
+### Movie Details Page
+The movie details page includes:
+- All the information from the movie card plus:
+  - **Trailer Video**
+  - **Actors**
+  - **Duration**
+  - **Director**
+  - **Box Office Earnings**
+  - **Add Rating**
+
+- A **Back Button** to return to the main movie list.
+
+## Stretch Goals <a name="stretch_goals"></a>
+
+- **Login & Register:** Implement user login and registration functionality.
+- **API Integration:** Fetch movie data from an external API.
+- **OOP Structure:** Organized using class-based Object-Oriented Programming principles.
+
+
+
